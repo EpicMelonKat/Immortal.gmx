@@ -7,12 +7,17 @@
   <sounds name="sound"/>
   <sprites name="sprites">
     <sprite>sprites\spr_player</sprite>
+    <sprite>sprites\spr_grass</sprite>
+    <sprite>sprites\spr_rocky</sprite>
+    <sprite>sprites\spr_sand</sprite>
+    <sprite>sprites\spr_blood</sprite>
   </sprites>
   <backgrounds name="background"/>
   <paths name="paths"/>
   <scripts name="scripts">
     <script>scripts\scr_setstats.gml</script>
     <script>scripts\scr_movement.gml</script>
+    <script>scripts\scr_generation.gml</script>
   </scripts>
   <objects name="objects">
     <object>objects\obj_WindowController</object>
@@ -20,6 +25,8 @@
     <object>objects\obj_GameController</object>
     <object>objects\DEBUGGER</object>
     <object>objects\obj_CameraController</object>
+    <object>objects\obj_floor</object>
+    <object>objects\obj_Generator</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\room0</room>
