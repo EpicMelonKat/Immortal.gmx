@@ -33,7 +33,10 @@
     <object>objects\obj_CameraController</object>
     <object>objects\obj_floor</object>
     <object>objects\obj_Generator</object>
+<<<<<<< HEAD
     <object>objects\obj_npc</object>
+=======
+>>>>>>> origin/master
   </objects>
   <rooms name="rooms">
     <room>rooms\room0</room>
