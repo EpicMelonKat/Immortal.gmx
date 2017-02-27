@@ -32,12 +32,14 @@ if right_key {
 
 //y
 if up_key {
+    image_index = 1
     if global.player_yspd - round(((global.stat_player_speed*0.02)+global.player_defaultspd/2)) > round(((global.stat_player_speed*0.02)+global.player_defaultspd/1.5)*-2){
     global.player_yspd -= round(((global.stat_player_speed*0.02)+global.player_defaultspd/2))
     }
 }
 
 if down_key {
+    image_index = 0
     if global.player_yspd + round(((global.stat_player_speed*0.02)+global.player_defaultspd/2)) < round(((global.stat_player_speed*0.02)+global.player_defaultspd/1.5)*2){
     global.player_yspd += round(((global.stat_player_speed*0.02)+global.player_defaultspd/2))
     }
