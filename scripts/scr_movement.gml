@@ -1,4 +1,7 @@
 ///scr_movement(1=WASD 2=ARROWKEYS)
+
+
+
 if argument0 = 1{
 up_key = ord("W")
 down_key = ord("S")
@@ -12,6 +15,15 @@ left_key = vk_left
 right_key = vk_right
 }
 
+up_pressed = keyboard_check_pressed(up_key)
+down_pressed = keyboard_check_pressed(down_key)
+if up_pressed {
+    lastdir = "up"
+}
+if down_pressed {
+    lastdir = "down"
+}
+
 up_key = keyboard_check(up_key)
 down_key = keyboard_check(down_key)
 left_key = keyboard_check(left_key)
@@ -19,27 +31,73 @@ right_key = keyboard_check(right_key)
 
 //x
 if left_key {
+    if lastdir = "up" {
+    scr_animate(4,8,0.1)
+    }
+    if lastdir = "down" {
+    scr_animate(0,4,0.1)
+    }
     if global.player_xspd - round(((global.stat_player_speed*0.02)+global.player_defaultspd/2)) > round(((global.stat_player_speed*0.02)+global.player_defaultspd/1.5)*-2){
     global.player_xspd -= round(((global.stat_player_speed*0.02)+global.player_defaultspd/2))
     }
 }
 
 if right_key {
+    if lastdir = "up" {
+    scr_animate(4,8,0.1)
+    }
+    if lastdir = "down" {
+    scr_animate(0,4,0.1)
+    }
     if global.player_xspd + round(((global.stat_player_speed*0.02)+global.player_defaultspd/2)) < round(((global.stat_player_speed*0.02)+global.player_defaultspd/1.5)*2){
     global.player_xspd += round(((global.stat_player_speed*0.02)+global.player_defaultspd/2))
     }
 }
 
+if keyboard_check(up_key) and keyboard_check(down_key) {
+    image_index = minframe
+    fspeed = 0
+    image_speed = 0
+}
+
+if keyboard_check(left_key) and keyboard_check(right_key) {
+    fspeed = 0
+    image_speed = 0
+}
+
+if left_key and right_key and up_key=false and down_key=false {
+    image_index = minframe
+    fspeed = 0
+    image_speed = 0
+}
+
+if keyboard_check(up_key)=false and keyboard_check(down_key)=false and keyboard_check(left_key)=false and keyboard_check(right_key)=false{
+    image_angle = minframe
+    fspeed = 0
+    image_speed = 0
+}
+
+
 //y
 if up_key {
-    image_index = 1
+    if down_key=false{
+    lastdir = "up"
+    scr_animate(4,8,0.1)
+    minframe = 4
+    }
+    
     if global.player_yspd - round(((global.stat_player_speed*0.02)+global.player_defaultspd/2)) > round(((global.stat_player_speed*0.02)+global.player_defaultspd/1.5)*-2){
     global.player_yspd -= round(((global.stat_player_speed*0.02)+global.player_defaultspd/2))
     }
 }
 
 if down_key {
-    image_index = 0
+    if up_key=false{
+    lastdir = "down"
+    scr_animate(0,4,0.1)
+    minframe = 0
+    }
+    
     if global.player_yspd + round(((global.stat_player_speed*0.02)+global.player_defaultspd/2)) < round(((global.stat_player_speed*0.02)+global.player_defaultspd/1.5)*2){
     global.player_yspd += round(((global.stat_player_speed*0.02)+global.player_defaultspd/2))
     }
