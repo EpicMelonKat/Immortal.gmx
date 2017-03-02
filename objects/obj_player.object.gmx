@@ -53,6 +53,7 @@ lastdir = "down"
           <argument>
             <kind>1</kind>
             <string>scr_movement(1)
+scr_depth()
 </string>
           </argument>
         </arguments>
