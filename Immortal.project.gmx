@@ -34,6 +34,7 @@
     <script>scripts\scr_movement.gml</script>
     <script>scripts\scr_setstats.gml</script>
     <script>scripts\scr_animate.gml</script>
+    <script>scripts\scr_depth.gml</script>
   </scripts>
   <objects name="objects">
     <object>objects\DEBUGGER</object>
@@ -45,6 +46,7 @@
     <object>objects\obj_player</object>
     <object>objects\obj_WindowController</object>
     <object>objects\object1</object>
+    <object>objects\obj_blood</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\room0</room>

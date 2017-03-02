@@ -50,7 +50,9 @@ gender = choose("male","female")
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if npctype = "healer"{
+            <string>scr_depth()
+
+if npctype = "healer"{
     if gender = "male"{
         sprite_index=spr_healerm
     }
