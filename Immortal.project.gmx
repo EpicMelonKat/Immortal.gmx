@@ -50,6 +50,7 @@
     <object>objects\object1</object>
     <object>objects\obj_blood</object>
     <object>objects\obj_handle</object>
+    <object>objects\spriter_test</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\room0</room>
