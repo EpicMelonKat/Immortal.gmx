@@ -29,6 +29,23 @@ down_key = keyboard_check(down_key)
 left_key = keyboard_check(left_key)
 right_key = keyboard_check(right_key)
 
+if keyboard_check_pressed(left_key) {
+attack_dir = "left"
+attack_degree = 180
+}
+if keyboard_check_pressed(right_key) {
+attack_dir = "right"
+attack_degree = 0
+}
+if keyboard_check_pressed(up_key) {
+attack_dir = "up"
+attack_degree = 90
+}
+if keyboard_check_pressed(down_key) {
+attack_dir = "down"
+attack_degree = 270
+}
+
 //x
 if left_key {
     if lastdir = "up" {
