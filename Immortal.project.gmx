@@ -6,62 +6,64 @@
   <NewExtensions/>
   <sounds name="sound"/>
   <sprites name="sprites">
-    <sprite>sprites\spr_grass</sprite>
-    <sprite>sprites\spr_sand</sprite>
-    <sprite>sprites\spr_rocky</sprite>
+    <sprite>sprites\spr_basicbow</sprite>
+    <sprite>sprites\spr_blacksmith</sprite>
     <sprite>sprites\spr_blood</sprite>
-    <sprite>sprites\spr_player</sprite>
+    <sprite>sprites\spr_earthstaff</sprite>
+    <sprite>sprites\spr_firestaff</sprite>
+    <sprite>sprites\spr_fortuneteller</sprite>
+    <sprite>sprites\spr_grass</sprite>
+    <sprite>sprites\spr_handle</sprite>
     <sprite>sprites\spr_healerf</sprite>
     <sprite>sprites\spr_healerm</sprite>
-    <sprite>sprites\spr_wizard</sprite>
-    <sprite>sprites\spr_fortuneteller</sprite>
-    <sprite>sprites\spr_witch</sprite>
-    <sprite>sprites\spr_mercenarym</sprite>
-    <sprite>sprites\spr_mercenaryf</sprite>
-    <sprite>sprites\spr_keeper</sprite>
-    <sprite>sprites\spr_blacksmith</sprite>
-    <sprite>sprites\spr_merchant</sprite>
-    <sprite>sprites\spr_mayor</sprite>
-    <sprite>sprites\spr_handle</sprite>
-    <sprite>sprites\spr_waterstaff</sprite>
-    <sprite>sprites\spr_firestaff</sprite>
-    <sprite>sprites\spr_earthstaff</sprite>
     <sprite>sprites\spr_holystaff</sprite>
-    <sprite>sprites\spr_windstaff</sprite>
-    <sprite>sprites\spr_sledgehammer</sprite>
-    <sprite>sprites\spr_scythe</sprite>
-    <sprite>sprites\spr_woodensword</sprite>
+    <sprite>sprites\spr_keeper</sprite>
+    <sprite>sprites\spr_mayor</sprite>
+    <sprite>sprites\spr_mercenaryf</sprite>
+    <sprite>sprites\spr_mercenarym</sprite>
+    <sprite>sprites\spr_merchant</sprite>
     <sprite>sprites\spr_ninjadagger</sprite>
+    <sprite>sprites\spr_player</sprite>
+    <sprite>sprites\spr_player1</sprite>
+    <sprite>sprites\spr_player3</sprite>
     <sprite>sprites\spr_purityblade</sprite>
-    <sprite>sprites\spr_basicbow</sprite>
+    <sprite>sprites\spr_rocky</sprite>
+    <sprite>sprites\spr_sand</sprite>
+    <sprite>sprites\spr_scythe</sprite>
+    <sprite>sprites\spr_sledgehammer</sprite>
+    <sprite>sprites\spr_waterstaff</sprite>
+    <sprite>sprites\spr_windstaff</sprite>
+    <sprite>sprites\spr_witch</sprite>
+    <sprite>sprites\spr_wizard</sprite>
+    <sprite>sprites\spr_woodensword</sprite>
   </sprites>
   <backgrounds name="background"/>
   <paths name="paths"/>
   <scripts name="scripts">
+    <script>scripts\scr_animate.gml</script>
+    <script>scripts\scr_attack.gml</script>
+    <script>scripts\scr_depth.gml</script>
     <script>scripts\scr_generation.gml</script>
     <script>scripts\scr_movement.gml</script>
+    <script>scripts\scr_setanimation.gml</script>
     <script>scripts\scr_setstats.gml</script>
-    <script>scripts\scr_animate.gml</script>
-    <script>scripts\scr_depth.gml</script>
     <script>scripts\scr_weaponmovement.gml</script>
-    <script>scripts\scr_attack.gml</script>
   </scripts>
   <objects name="objects">
+    <object>objects\coder_test</object>
     <object>objects\DEBUGGER</object>
+    <object>objects\obj_blood</object>
     <object>objects\obj_CameraController</object>
     <object>objects\obj_floor</object>
     <object>objects\obj_GameController</object>
     <object>objects\obj_Generator</object>
+    <object>objects\obj_handle</object>
     <object>objects\obj_npc</object>
     <object>objects\obj_player</object>
     <object>objects\obj_WindowController</object>
-    <object>objects\obj_blood</object>
-    <object>objects\obj_handle</object>
-<<<<<<< HEAD
+    <object>objects\object1</object>
+    <object>objects\object5</object>
     <object>objects\spriter_test</object>
-=======
-    <object>objects\coder_test</object>
->>>>>>> refs/remotes/origin/coder-branch
   </objects>
   <rooms name="rooms">
     <room>rooms\room0</room>
