@@ -36,34 +36,34 @@
     <sprite>sprites\spr_witch</sprite>
     <sprite>sprites\spr_wizard</sprite>
     <sprite>sprites\spr_woodensword</sprite>
+    <sprite>sprites\spr_aim</sprite>
   </sprites>
   <backgrounds name="background"/>
   <paths name="paths"/>
   <scripts name="scripts">
     <script>scripts\scr_animate.gml</script>
     <script>scripts\scr_attack.gml</script>
+    <script>scripts\scr_attack_old.gml</script>
     <script>scripts\scr_depth.gml</script>
     <script>scripts\scr_generation.gml</script>
     <script>scripts\scr_movement.gml</script>
     <script>scripts\scr_setanimation.gml</script>
     <script>scripts\scr_setstats.gml</script>
     <script>scripts\scr_weaponmovement.gml</script>
+    <script>scripts\scr_weapons.gml</script>
   </scripts>
   <objects name="objects">
-    <object>objects\coder_test</object>
     <object>objects\DEBUGGER</object>
     <object>objects\obj_blood</object>
     <object>objects\obj_CameraController</object>
     <object>objects\obj_floor</object>
     <object>objects\obj_GameController</object>
     <object>objects\obj_Generator</object>
-    <object>objects\obj_handle</object>
+    <object>objects\obj_weapon</object>
     <object>objects\obj_npc</object>
     <object>objects\obj_player</object>
     <object>objects\obj_WindowController</object>
-    <object>objects\object1</object>
-    <object>objects\object5</object>
-    <object>objects\spriter_test</object>
+    <object>objects\obj_Aim</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\room0</room>

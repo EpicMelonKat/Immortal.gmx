@@ -32,6 +32,9 @@ fspeed = 0.05
 lastdir = "down"
 attacking = false
 attack_dir = "down"
+attack_degree = 0
+
+instance_create(x,y,obj_weapon)
 </string>
           </argument>
         </arguments>

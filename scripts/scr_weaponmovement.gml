@@ -1,4 +1,6 @@
+if attacking = false {
 hand_distance = 24
+
 hand_indistance = 16
 hand_heightdist = 10
 
@@ -54,4 +56,17 @@ if x > obj_player.x {
 }
 if x < obj_player.x {
     depth = obj_player.depth-1
+}
+}
+if attacking = true {
+    x = obj_player.x
+    y = obj_player.y
+    scr_depth()
+    if obj_player.lastdir = "up" {
+        dmod = 1
+    }
+    if obj_player.lastdir = "down" {
+        dmod = -1
+    }
+    depth+=dmod
 }

@@ -9,6 +9,6 @@ global.stat_player_cooldown = 1
 global.stat_player_level = 1
 global.stat_player_exp = 1
 
-global.player_defaultspd = 4
 global.player_xspd = 0
 global.player_yspd = 0
+global.player_maxspd = 4
