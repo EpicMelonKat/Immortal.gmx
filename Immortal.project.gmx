@@ -12,6 +12,7 @@
     <sprite>sprites\spr_earthstaff</sprite>
     <sprite>sprites\spr_firestaff</sprite>
     <sprite>sprites\spr_fortuneteller</sprite>
+    <sprite>sprites\spr_dummy</sprite>
     <sprite>sprites\spr_grass</sprite>
     <sprite>sprites\spr_handle</sprite>
     <sprite>sprites\spr_healerf</sprite>
@@ -37,6 +38,9 @@
     <sprite>sprites\spr_wizard</sprite>
     <sprite>sprites\spr_woodensword</sprite>
     <sprite>sprites\spr_aim</sprite>
+    <sprite>sprites\spr_bar</sprite>
+    <sprite>sprites\spr_bar_thin</sprite>
+    <sprite>sprites\spr_ball</sprite>
   </sprites>
   <backgrounds name="background"/>
   <paths name="paths"/>
@@ -51,7 +55,18 @@
     <script>scripts\scr_setstats.gml</script>
     <script>scripts\scr_weaponmovement.gml</script>
     <script>scripts\scr_weapons.gml</script>
+    <script>scripts\scr_atw.gml</script>
+    <script>scripts\scr_alliances.gml</script>
+    <script>scripts\scr_dealdamage.gml</script>
+    <script>scripts\scr_drawhealth.gml</script>
+    <script>scripts\scr_recdamage.gml</script>
+    <script>scripts\scr_recexp.gml</script>
+    <script>scripts\scr_weaponchanger.gml</script>
   </scripts>
+  <fonts name="fonts">
+    <font>fonts\fnt_distance</font>
+    <font>fonts\fnt_damage</font>
+  </fonts>
   <objects name="objects">
     <object>objects\DEBUGGER</object>
     <object>objects\obj_blood</object>
@@ -64,6 +79,10 @@
     <object>objects\obj_player</object>
     <object>objects\obj_WindowController</object>
     <object>objects\obj_Aim</object>
+    <object>objects\obj_dummy</object>
+    <object>objects\obj_Interface</object>
+    <object>objects\obj_Damage</object>
+    <object>objects\obj_projectile</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\room0</room>
