@@ -40,7 +40,7 @@ minframe = 0
 //image_speed=0
 }
 
-spd_mod = global.stat_player_speed/100+2
+spd_mod = obj_player.myspeed/100+2
 
 if global.player_xspd < spd_mod*4 and global.player_xspd > spd_mod*-4 {
 global.player_xspd += sign(keyboard_check(left_key))*-1 * spd_mod + sign(keyboard_check(right_key)) * spd_mod

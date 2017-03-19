@@ -45,6 +45,7 @@
     <sprite>sprites\spr_bar</sprite>
     <sprite>sprites\spr_bar_thin</sprite>
     <sprite>sprites\spr_ball</sprite>
+    <sprite>sprites\spr_plus</sprite>
   </sprites>
   <backgrounds name="background"/>
   <paths name="paths"/>
@@ -66,10 +67,16 @@
     <script>scripts\scr_recdamage.gml</script>
     <script>scripts\scr_recexp.gml</script>
     <script>scripts\scr_weaponchanger.gml</script>
+    <script>scripts\scr_upgradebox.gml</script>
   </scripts>
   <fonts name="fonts">
     <font>fonts\fnt_distance</font>
     <font>fonts\fnt_damage</font>
+    <font>fonts\fnt_stats</font>
+    <font>fonts\fnt_level</font>
+    <font>fonts\fnt_names</font>
+    <font>fonts\fnt_upgrades</font>
+    <font>fonts\fnt_upgradesex</font>
   </fonts>
   <objects name="objects">
     <object>objects\DEBUGGER</object>

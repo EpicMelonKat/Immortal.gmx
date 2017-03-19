@@ -84,11 +84,11 @@ draw_set_font(fnt_damage)
 
 if damage*-1 &gt; 0 {
     usecol = c_lime
-    draw_text_colour(x,y,"+" + string(damage*-1),usecol,usecol,usecol,usecol,fadeacc)
+    draw_text_colour(x,y,"+" + string(round(damage*-1)),usecol,usecol,usecol,usecol,fadeacc)
     exit
 }
 
-draw_text_colour(x,y,string(damage*-1),usecol,usecol,usecol,usecol,fadeacc)
+draw_text_colour(x,y,string(round(damage*-1)),usecol,usecol,usecol,usecol,fadeacc)
 
 
 draw_set_color(c_black)

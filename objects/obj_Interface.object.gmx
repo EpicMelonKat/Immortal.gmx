@@ -8,6 +8,53 @@
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
+    <event eventtype="0" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>global.dxpos = 32
+global.dypos = 32
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="8" enumb="73">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>draw_sprite(spr_aim,1,mouse_x,mouse_y)
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="8" enumb="64">
       <action>
         <libid>1</libid>
@@ -25,18 +72,38 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>x = obj_player.x
+            <string>if instance_exists(obj_player) {
+x = obj_player.x
 y = obj_player.y
 draw_set_font(fnt_distance)
 draw_set_halign(fa_center)
 draw_set_valign(fa_middle)
-draw_text(view_wview/2,view_hview-68,string(round(distance_to_point(room_width/2,room_height/2))))
-draw_healthbar(view_wview/2-496,view_hview-43,view_wview/2+495,view_hview-38,(obj_player.myhealth/global.stat_player_health)*100,c_dkgray,c_red,c_red,0,1,0)
+draw_text(view_wview/2,view_hview-60,string(round(distance_to_point(room_width/2,room_height/2))))
+draw_set_font(fnt_stats)
+draw_healthbar(view_wview/2-496,view_hview-43,view_wview/2+495,view_hview-38,(obj_player.myhealth/(obj_player.stat_health*5))*100,c_dkgray,c_red,c_red,0,1,0)
 draw_sprite(spr_bar_thin,0,view_wview/2,view_hview-40)
-draw_text(view_wview/2,view_hview-40,string(obj_player.myhealth)+ "/" + string(global.stat_player_health))
+draw_text(view_wview/2,view_hview-40,string(round(obj_player.myhealth))+ "/" + string(round(obj_player.stat_health*5)))
 draw_healthbar(view_wview/2-496,view_hview-20,view_wview/2+495,view_hview-15,(obj_player.current_exp/obj_player.exp_req)*100,c_dkgray,c_lime,c_lime,0,1,0)
 draw_sprite(spr_bar_thin,0,view_wview/2,view_hview-17)
-draw_text(view_wview/2,view_hview-17,string(obj_player.current_exp)+ "/" + string(obj_player.exp_req))
+draw_text(view_wview/2,view_hview-17,string(round(obj_player.current_exp))+ "/" + string(obj_player.exp_req))
+draw_set_halign(fa_left)
+draw_set_font(fnt_level)
+draw_text(140,view_hview-63,"Lvl " + string(obj_player.level))
+draw_set_halign(fa_center)
+//scr_upgradebox(view_wview/2+60+10,560,"Health")
+//scr_upgradebox(view_wview/2-60-10,560,"Defense")
+//scr_upgradebox(view_wview/2+60+60+60+30,560,"Regen")
+//scr_upgradebox(view_wview/2-60-60-60-30,560,"Damage")
+//scr_upgradebox(view_wview/2+60+60+60+60+60+50,560,"Elemental")
+//scr_upgradebox(view_wview/2-60-60-60-60-60-50,560,"Cooldown")
+
+scr_upgradebox(view_wview/2+60+10,32,"Health",obj_player.stat_health)
+scr_upgradebox(view_wview/2-60-10,32,"Defense",obj_player.defense)
+scr_upgradebox(view_wview/2+60+60+60+30,32,"Regen",obj_player.regen)
+scr_upgradebox(view_wview/2-60-60-60-30,32,"Damage",obj_player.mydamage)
+scr_upgradebox(view_wview/2+60+60+60+60+60+50,32,"Speed",obj_player.myspeed)
+scr_upgradebox(view_wview/2-60-60-60-60-60-50,32,"Cooldown",obj_player.mycooldown)
+}
 </string>
           </argument>
         </arguments>

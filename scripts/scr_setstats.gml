@@ -1,10 +1,8 @@
-global.stat_player_health = 10
+global.stat_player_health = 1
 global.stat_player_defense = 1
 global.stat_player_speed = 1
 global.stat_player_regen = 1
-global.stat_player_strength = 1
-global.stat_player_magicstrength = 1
-global.stat_player_usespeed = 1
+global.stat_player_damage = 1
 global.stat_player_cooldown = 1
 
 global.stat_player_level = 1
