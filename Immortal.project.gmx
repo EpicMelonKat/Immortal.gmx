@@ -7,6 +7,9 @@
   <sounds name="sound"/>
   <sprites name="sprites">
     <sprite>sprites\spr_basicbow</sprite>
+    <sprite>sprites\spr_infinitybow</sprite>
+    <sprite>sprites\spr_solarbow</sprite>
+    <sprite>sprites\spr_lunarbow</sprite>
     <sprite>sprites\spr_blacksmith</sprite>
     <sprite>sprites\spr_blood</sprite>
     <sprite>sprites\spr_earthstaff</sprite>
@@ -37,6 +40,7 @@
     <sprite>sprites\spr_witch</sprite>
     <sprite>sprites\spr_wizard</sprite>
     <sprite>sprites\spr_woodensword</sprite>
+    <sprite>sprites\spr_dynastyblade</sprite>
     <sprite>sprites\spr_aim</sprite>
     <sprite>sprites\spr_bar</sprite>
     <sprite>sprites\spr_bar_thin</sprite>
