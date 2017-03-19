@@ -1,3 +1,10 @@
+if myhealth  <= 0 {
+    with(weapon) {
+        instance_destroy()
+    }
+    instance_destroy()
+}
+
 if recdamage != 0 { //regular
 t_recdamage = round(recdamage/defense)
 if t_recdamage < 1 {

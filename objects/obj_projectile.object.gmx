@@ -25,10 +25,25 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>acc = 5
+            <string>weapon = instance_nearest(x,y,obj_weapon)
+acc = 5
 hits = 1
 attacking = false
-hit_list = ds_list_create()
+self.hit_list=-1
+pcol = c_orange
+
+if weapon.element = "fire" {
+    pcol = c_red
+}
+if weapon.element = "water" {
+    pcol = c_teal
+}
+if weapon.element = "wind" {
+    pcol = c_white
+}
+if weapon.element = "earth" {
+    pcol = c_maroon
+}
 </string>
           </argument>
         </arguments>
@@ -53,7 +68,8 @@ hit_list = ds_list_create()
             <kind>1</kind>
             <string>speed = 7
 scr_depth()
-effect_create_above(ef_flare,x,y,1,c_orange)
+
+effect_create_above(ef_flare,x,y,1,pcol)
 </string>
           </argument>
         </arguments>
@@ -77,8 +93,10 @@ effect_create_above(ef_flare,x,y,1,c_orange)
           <argument>
             <kind>1</kind>
             <string>acc+=0.1
-scr_dealdamage()
 
+if instance_exists(holder) {
+scr_dealdamage()
+}
 
 </string>
           </argument>
