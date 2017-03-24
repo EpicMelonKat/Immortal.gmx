@@ -26,8 +26,13 @@
           <argument>
             <kind>1</kind>
             <string>randomize()
-npctype = choose("healer","mercenary","keeper","wizard", "blacksmith", "mayor", "merchant", "witch", "fortuneteller")
+npctype = choose("mayor")
 gender = choose("male","female")
+if npctype = "mayor" {
+dialogue[1] = "Hello there, Player!"
+dialogue1[2] = "Looks like you're new around here!"
+diamax = 2
+}
 </string>
           </argument>
         </arguments>
@@ -88,6 +93,15 @@ if npctype = "mercenary"{
     if gender = "female"{
         sprite_index=spr_mercenaryf
     }
+}
+
+if instance_exists(obj_player) {
+if place_meeting(x,y,obj_player) {
+if keyboard_check_pressed(vk_space) {
+    tx = instance_create(x,y-sprite_height/2,obj_Text)
+    tx.text = dialogue[1]
+}
+}
 }
 </string>
           </argument>

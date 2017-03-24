@@ -58,6 +58,7 @@ regen=global.stat_player_regen
 mydamage=global.stat_player_damage
 mycooldown=global.stat_player_cooldown
 myspeed=global.stat_player_speed
+allocation = global.stat_ap
 
 holder = id
 oholder = object_index
@@ -97,7 +98,6 @@ myhealth+=regen*0.1
 if myhealth+regen*0.1 &gt; stat_health*5 {
 myhealth=stat_health*5
 }
-
 alarm[0]=120
 
 </string>
@@ -132,6 +132,7 @@ if current_exp &gt;= exp_req {
 extraexp = current_exp-exp_req
 current_exp=0
 current_exp+=extraexp
+allocation+=2
 level+=1
 }
 </string>

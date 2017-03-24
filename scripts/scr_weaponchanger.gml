@@ -10,7 +10,8 @@ wep[8]=spr_ninjadagger
 wep[9]=spr_scythe
 wep[10]=spr_sledgehammer
 wep[11]=spr_woodensword
-wepmax = 11
+wep[12]=spr_dynastyblade
+wepmax = 12
 
 if mouse_wheel_down() {
     if mwep < wepmax {

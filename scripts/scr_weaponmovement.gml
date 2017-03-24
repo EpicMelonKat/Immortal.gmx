@@ -49,24 +49,24 @@ if holder.image_index = 7 {
 x = pos[holder.image_index]
 
 scr_depth()
-depth+=dmod
+//depth+=dmod
 
-if x > holder.x {
-    depth = holder.depth+1
-}
-if x < holder.x {
-    depth = holder.depth-1
-}
-}
+//if x > holder.x {
+//    depth = holder.depth+1
+//}
+//if x < holder.x {
+//    depth = holder.depth-1
+//}
+//}
 if attacking = true {
     x = holder.x
     y = holder.y
-    scr_depth()
-    if holder.lastdir = "up" {
-        dmod = 1
+//    scr_depth()
+//    if holder.lastdir = "up" {
+//        dmod = 1
+//    }
+//    if holder.lastdir = "down" {
+//        dmod = -1
     }
-    if holder.lastdir = "down" {
-        dmod = -1
-    }
-    depth+=dmod
+//    depth+=dmod
 }

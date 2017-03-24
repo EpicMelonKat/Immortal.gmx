@@ -11,3 +11,5 @@ global.stat_player_exp = 0
 global.player_xspd = 0
 global.player_yspd = 0
 global.player_maxspd = 4
+
+global.stat_ap = 0

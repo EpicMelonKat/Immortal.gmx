@@ -14,15 +14,21 @@ draw_rectangle(xpos-width-1,ypos-height/2-6,xpos+width+1,ypos+height/2+5+1,1)
 
 //draw_sprite(spr_plus,1,xpos-width+15,ypos)
 draw_set_font(fnt_upgradesex)
-draw_text(xpos,ypos+height/2-32,string(variable))
+if variable > 1 {
+draw_text(xpos,ypos+height/2-32,string(variable-1))
+}
 draw_set_font(fnt_upgrades)
 draw_text(xpos,ypos,text)
 gx = window_mouse_get_x()
 gy = window_mouse_get_y()
 
-if mouse_check_button(mb_left) {
+if obj_player.allocation > 0 {
+if mouse_check_button_pressed(mb_left) or mouse_check_button(mb_right) {
 if gx < xpos+width+1 and gx > xpos-width-1 {
     if gy < ypos+height/2+5+1 and gy > ypos-height/2-6 {
+        if mouse_check_button_pressed(mb_left) {
+                obj_player.allocation-=1
+        }
         //if variable = obj_player.regen {
         if text = "Regen"{
             obj_player.regen+=1
@@ -57,4 +63,4 @@ if gx < xpos+width+1 and gx > xpos-width-1 {
     }
 }
 }
-
+}

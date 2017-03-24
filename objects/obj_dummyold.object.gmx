@@ -25,16 +25,19 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>scr_setotherstats()
-
-alarm[0]=120
-
+            <string>
+maxhealth = 15
+myhealth = 15
+defense = 1
 weapon = instance_create(x,y,obj_weapon)
 weapon.holder = id
 weapon.oholder = object_index
 lastdir = "down"
 
-
+level = (distance_to_point(room_width/2,room_height/2)*distance_to_point(room_width/2,room_height/2))/100000000
+if level &lt; 1 {
+    level = 1
+}
 recdamage = 0
 recexp = 0
 t_recexp = 0
@@ -68,30 +71,8 @@ t_recearth = 0
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>lasthitter.recexp+=round(level*level*0.55)
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="2" enumb="0">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>scr_regen()
+            <string>//lasthitter.recexp+=round(level*1.5)
+instance_create(x+2,y,obj_dummy)
 </string>
           </argument>
         </arguments>
@@ -116,6 +97,12 @@ t_recearth = 0
             <kind>1</kind>
             <string>scr_depth()
 scr_recdamage()
+if instance_exists(obj_dummy) {
+with(weapon) {
+instance_destroy()
+}
+instance_destroy()
+}
 
 </string>
           </argument>

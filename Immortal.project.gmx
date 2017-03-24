@@ -68,6 +68,9 @@
     <script>scripts\scr_recexp.gml</script>
     <script>scripts\scr_weaponchanger.gml</script>
     <script>scripts\scr_upgradebox.gml</script>
+    <script>scripts\scr_setotherstats.gml</script>
+    <script>scripts\scr_regen.gml</script>
+    <script>scripts\scr_text.gml</script>
   </scripts>
   <fonts name="fonts">
     <font>fonts\fnt_distance</font>
@@ -91,8 +94,10 @@
     <object>objects\obj_WindowController</object>
     <object>objects\obj_Aim</object>
     <object>objects\obj_dummy</object>
+    <object>objects\obj_dummyold</object>
     <object>objects\obj_Interface</object>
     <object>objects\obj_Damage</object>
+    <object>objects\obj_Text</object>
     <object>objects\obj_projectile</object>
   </objects>
   <rooms name="rooms">

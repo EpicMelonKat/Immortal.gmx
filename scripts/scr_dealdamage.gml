@@ -3,6 +3,7 @@
 if attacking = true {
 
 if weapon_type = "melee" {
+dmod = 1 + (holder.mydamage/100)
     if oholder = obj_player { //ally
         if place_meeting(x,y,obj_dummy) {
             cdum = instance_nearest(x,y,obj_dummy)
@@ -13,21 +14,21 @@ if weapon_type = "melee" {
             }
                 if damage!=0 {
                 cdum = instance_nearest(x,y,obj_dummy)
-                cdum.recdamage += damage
+                cdum.recdamage += damage*dmod
                 }
                 if eldamage!=0 {
                 cdum = instance_nearest(x,y,obj_dummy)
                 if element = "fire" {
-                    cdum.recfire+=eldamage
+                    cdum.recfire+=eldamage*dmod*dmod
                 }
                 if element = "water" {
-                    cdum.recwater+=eldamage
+                    cdum.recwater+=eldamage*dmod
                 }
                 if element = "wind" {
-                    cdum.recwind+=eldamage
+                    cdum.recwind+=eldamage*dmod
                 }
                 if element = "earth" {
-                    cdum.recearth+=eldamage
+                    cdum.recearth+=eldamage*dmod
                 }
                 }
                 cdum.lasthitter = holder
@@ -47,21 +48,21 @@ if weapon_type = "melee" {
             }
                 if damage!=0 {
                 cdum = instance_nearest(x,y,obj_player)
-                cdum.recdamage += damage
+                cdum.recdamage += damage*dmod
                 }
                 if eldamage!=0 {
                 cdum = instance_nearest(x,y,obj_player)
                 if element = "fire" {
-                    cdum.recfire+=eldamage
+                    cdum.recfire+=eldamage*dmod
                 }
                 if element = "water" {
-                    cdum.recwater+=eldamage
+                    cdum.recwater+=eldamage*dmod
                 }
                 if element = "wind" {
-                    cdum.recwind+=eldamage
+                    cdum.recwind+=eldamage*dmod
                 }
                 if element = "earth" {
-                    cdum.recearth+=eldamage
+                    cdum.recearth+=eldamage*dmod
                 }
                 }
                 cdum.lasthitter = holder
@@ -77,6 +78,7 @@ if weapon_type = "melee" {
 //}
 
 if object_index = obj_projectile {
+dmod = 1 + (holder.mydamage/100)
     if holder.weapon.weapon_type = "magic" {
         if oholder = obj_player { //ally
         if place_meeting(x,y,obj_dummy) {
@@ -89,21 +91,21 @@ if object_index = obj_projectile {
             //if ds_list_find_index(self.hit_list[id],instance_nearest(x,y,obj_dummy)) = -1 {
                 if holder.weapon.damage!=0 {
                 cdum = instance_nearest(x,y,obj_dummy)
-                cdum.recdamage += holder.weapon.damage
+                cdum.recdamage += holder.weapon.damage*dmod
                 }
                 if holder.weapon.eldamage!=0 {
                 cdum = instance_nearest(x,y,obj_dummy)
                 if holder.weapon.element = "fire" {
-                    cdum.recfire+=holder.weapon.eldamage
+                    cdum.recfire+=holder.weapon.eldamage*dmod
                 }
                 if holder.weapon.element = "water" {
-                    cdum.recwater+=holder.weapon.eldamage
+                    cdum.recwater+=holder.weapon.eldamage*dmod
                 }
                 if holder.weapon.element = "wind" {
-                    cdum.recwind+=holder.weapon.eldamage
+                    cdum.recwind+=holder.weapon.eldamage*dmod
                 }
                 if holder.weapon.element = "earth" {
-                    cdum.recearth+=holder.weapon.eldamage
+                    cdum.recearth+=holder.weapon.eldamage*dmod
                 }
                 }
                 cdum.lasthitter = holder
@@ -127,21 +129,21 @@ if object_index = obj_projectile {
             }
                 if holder.weapon.damage!=0 {
                 cdum = instance_nearest(x,y,obj_player)
-                cdum.recdamage += holder.weapon.damage
+                cdum.recdamage += holder.weapon.damage*dmod
                 }
                 if holder.weapon.eldamage!=0 {
                 cdum = instance_nearest(x,y,obj_player)
                 if holder.weapon.element = "fire" {
-                    cdum.recfire+=holder.weapon.eldamage
+                    cdum.recfire+=holder.weapon.eldamage*dmod
                 }
                 if holder.weapon.element = "water" {
-                    cdum.recwater+=holder.weapon.eldamage
+                    cdum.recwater+=holder.weapon.eldamage*dmod
                 }
                 if holder.weapon.element = "wind" {
-                    cdum.recwind+=holder.weapon.eldamage
+                    cdum.recwind+=holder.weapon.eldamage*dmod
                 }
                 if holder.weapon.element = "earth" {
-                    cdum.recearth+=holder.weapon.eldamage
+                    cdum.recearth+=holder.weapon.eldamage*dmod
                 }
                 }
                 cdum.lasthitter = holder

@@ -14,31 +14,58 @@ left_key = vk_left
 right_key = vk_right
 }
 
-if keyboard_check_pressed(left_key) {
-attack_dir = "left"
-attack_degree = 90
-}
-if keyboard_check_pressed(right_key) {
-attack_dir = "right"
-attack_degree = 270
-}
-if keyboard_check_pressed(up_key) {
-attack_dir = "up"
-attack_degree = 0
-lastdir = "up"
-minframe = 4
-//image_index=minframe
-//image_speed=0
 
+
+
+if attacking = false {
+if lastdir = "up" {
+    minframe = 4
+    maxframe = 4
 }
-if keyboard_check_pressed(down_key) {
-attack_dir = "down"
-attack_degree = 180
-lastdir = "down"
-minframe = 0
-//image_index=minframe
-//image_speed=0
+if lastdir = "down" {
+    minframe = 0
+    maxframe = 0
 }
+    if keyboard_check(left_key) and keyboard_check(right_key)=false {//left key
+        if lastdir = "up" {
+            minframe = 4
+            maxframe = 8
+        }
+        if lastdir = "down" {
+            minframe = 0
+            maxframe = 4
+        }
+    }
+    if keyboard_check(right_key) and keyboard_check(left_key)=false {//right key
+        if lastdir = "up" {
+            minframe = 4
+            maxframe = 8
+        }
+        if lastdir = "down" {
+            minframe = 0
+            maxframe = 4
+        }
+    }
+    if keyboard_check(up_key) and keyboard_check(down_key)=false {//back
+        minframe = 4
+        maxframe = 8
+        lastdir = "up"
+    }
+    if keyboard_check(down_key) and keyboard_check(up_key)=false {//front
+        minframe = 0
+        maxframe = 4
+        lastdir = "down"
+    }
+    
+}
+
+
+
+scr_animate(minframe,maxframe,0.1)
+
+
+
+
 
 spd_mod = obj_player.myspeed/100+2
 
@@ -71,20 +98,6 @@ if global.player_yspd > 0 {
     if global.player_yspd < 0 {
         global.player_yspd = 0
     }
-}
-
-
-if global.player_xspd > 0 or global.player_xspd < 0 or global.player_yspd > 0 or global.player_yspd < 0{
-    if lastdir = "up" {
-            scr_animate(4,8,0.1)
-    }
-    if lastdir = "down" {
-            scr_animate(0,4,0.1)
-    }
-}
-if keyboard_check(up_key)=false and keyboard_check(down_key)=false and keyboard_check(left_key)=false and keyboard_check(right_key)=false {
-    image_index = minframe
-    image_speed = 0
 }
 
 x+=global.player_xspd

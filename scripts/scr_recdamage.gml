@@ -6,7 +6,7 @@ if myhealth  <= 0 {
 }
 
 if recdamage != 0 { //regular
-t_recdamage = round(recdamage/defense)
+t_recdamage = round(recdamage-((defense*0.7)))
 if t_recdamage < 1 {
 t_recdamage = 1
 }
@@ -22,7 +22,7 @@ recdamage = 0
 }
 
 if recfire != 0 { //fire
-t_recfire = round(recfire/defense)
+t_recfire = round(recfire-((defense*0.7)))
 if t_recfire < 1 {
 t_recfire = 1
 }
@@ -38,7 +38,7 @@ recfire = 0
 }
 
 if recwater != 0 { //water
-t_recwater = round(recwater/defense)
+t_recwater = round(recwater-((defense*0.7)))
 if t_recwater < 1 {
 t_recwater = 1
 }
@@ -54,7 +54,7 @@ recwater = 0
 }
 
 if recwind != 0 { //wind
-t_recwind = round(recwind/defense)
+t_recwind = round(recwind-((defense*0.7)))
 if t_recwind < 1 {
 t_recwind = 1
 }
@@ -70,7 +70,7 @@ recwind = 0
 }
 
 if recearth != 0 {  //earth
-t_recearth = round(recearth/defense)
+t_recearth = round(recearth-((defense*0.7)))
 if t_recearth < 1 {
 t_recearth = 1
 }
