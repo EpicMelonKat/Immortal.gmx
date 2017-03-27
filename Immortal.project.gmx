@@ -26,6 +26,9 @@
     <sprite>sprites\spr_mercenaryf</sprite>
     <sprite>sprites\spr_mercenarym</sprite>
     <sprite>sprites\spr_challenger</sprite>
+    <sprite>sprites\spr_vendinghouse</sprite>
+    <sprite>sprites\spr_longhouse</sprite>
+    <sprite>sprites\spr_basichouse</sprite>
     <sprite>sprites\spr_merchant</sprite>
     <sprite>sprites\spr_bowman</sprite>
     <sprite>sprites\spr_ninjadagger</sprite>
