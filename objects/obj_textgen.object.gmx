@@ -3,7 +3,7 @@
   <spriteName>&lt;undefined&gt;</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>-1569325055</depth>
+  <depth>0</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
@@ -25,14 +25,10 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>acc = 0.01
-fadeacc = 1
-usecol = c_white
-dodis = false
-text = "Wonderful weather we're having!"
-textplace = 0
-mytext = ""
-nextline = ""
+            <string>dotxt = 0
+txt = 0
+currentobj = -1
+justcreated=true
 </string>
           </argument>
         </arguments>
@@ -55,48 +51,18 @@ nextline = ""
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if dodis = false {
-    mytext = string_copy(text,1,textplace)
-    textplace+=0.15
-    if textplace &gt; string_length(text) {
-        dodis = true
-    }
+            <string>if txt != dotxt+1 {
+if instance_exists(currentobj)=false or justcreated=true {
+    justcreated=false
+    currentobj = instance_create(x,y,obj_Text).id
+    currentobj.text = line[txt]
+    txt+=1
 }
-if dodis = true {
-y-=acc
-acc+=0.01
-fadeacc-=0.025
-if fadeacc = 0 {
+}
+
+if txt = dotxt+1 {
     instance_destroy()
 }
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="8" enumb="0">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>draw_set_halign(fa_center)
-draw_set_valign(fa_middle)
-draw_set_font(fnt_damage)
-draw_text_colour(x,y,mytext,usecol,usecol,usecol,usecol,fadeacc)
-draw_set_color(c_black)
 </string>
           </argument>
         </arguments>
