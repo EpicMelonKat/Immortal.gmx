@@ -1,85 +1,29 @@
+///scr_generation(distance,scale)
 
-x = view_xview-340
-y = view_yview-320
+x = obj_player.x
+y = obj_player.y
 
-while x < view_xview+view_wview+320{
-randomize()
-if irandom(8000)=1 {
-    biome = choose(1,2,3,4)
-}
-move_snap(320,320)
+//req variables
+gendist = 2 //1,2,3,4,5...   1=default
+biome = 1
+scale = 2 //1,2,3,4,5... 1=default
 
-if place_meeting(x,y,obj_floor)=false{
-instance_create(x,y,obj_floor)
-}
+//set generator to top left
+x = obj_player.x-(view_wview/2+(view_wview/3*gendist))
+y = obj_player.y-(view_hview/2+(view_hview/3*gendist))
 
-x+=320
-
-}
-y+=320
-x = view_xview-32
-
-while x < view_xview+view_wview+320{
-randomize()
-if irandom(8000)=1 {
-    biome = choose(1,2,3,4)
-}
-move_snap(320,320)
-
-if place_meeting(x,y,obj_floor)=false{
-instance_create(x,y,obj_floor)
-}
-
-x+=320
-
-}
-y+=320
-x = view_xview-32
-while x < view_xview+view_wview+320{
-randomize()
-if irandom(8000)=1 {
-    biome = choose(1,2,3,4)
-}
-move_snap(320,320)
-
-if place_meeting(x,y,obj_floor)=false{
-instance_create(x,y,obj_floor)
-}
-
-x+=320
-
-}
-y+=320
-x = view_xview-32
-while x < view_xview+view_wview+320{
-randomize()
-if irandom(8000)=1 {
-    biome = choose(1,2,3,4)
-}
-move_snap(320,320)
-
-if place_meeting(x,y,obj_floor)=false{
-instance_create(x,y,obj_floor)
-}
-
-x+=320
-
-}
+//loop through positions and create floors (will generate in a square)
 
 
-y+=320
-x = view_xview-32
-while x < view_xview+view_wview+320{
-randomize()
-if irandom(8000)=1 {
-    biome = choose(1,2,3,4)
-}
-move_snap(320,320)
-
-if place_meeting(x,y,obj_floor)=false{
-instance_create(x,y,obj_floor)
-}
-
-x+=320
-
+while x < obj_player.x+((view_wview/2)+(view_wview/3)*gendist) and y < obj_player.y+((view_hview/2)+(view_hview/3)*gendist) { //do until at bottom right
+        
+        while x < obj_player.x+((view_wview/2)+(view_wview/3)*gendist) {
+            move_snap(320/(scale),320/(scale))
+            if place_meeting(x,y,obj_floor)=false {
+                newfloor = instance_create(x,y,obj_floor)
+            }
+            x+=320/(scale)
+        }
+    x = obj_player.x-(view_wview/2+(view_wview/3*gendist))
+    y+=320/(scale)
 }

@@ -29,7 +29,7 @@
 
 
 randomize()
-npctype = choose("mayor","healer","witch")
+npctype = choose("mayor","healer","witch","fortuneteller","keeper","merchant","blacksmith","mercenary","wizard","dummy")
 gender = choose("male","female")
 
 scr_npcdialogue()
@@ -100,6 +100,9 @@ if npctype = "mercenary"{
         sprite_index=spr_mercenaryf
     }
 }
+if npctype = "dummy" {
+    sprite_index = spr_dummy
+}
 
 if instance_exists(obj_player) {
 if place_meeting(x,y,obj_player) {
@@ -126,6 +129,114 @@ if keyboard_check_pressed(vk_space) {
         scr_dialogue(meeting_text[1],greeting[1])
     } else {
     scr_dialogue(greeting[1])
+    }
+    }
+    
+    if npctype = "fortuneteller" {
+    if met = false {
+        met = true
+        scr_dialogue(meeting_text[1],meeting_text[2],meeting_text[3],meeting_text[4],greeting[1])
+    } else {
+    scr_dialogue(greeting[1])
+    }
+    }
+    
+    if npctype = "wizard" {
+    if met = false {
+        met = true
+        scr_dialogue(meeting_text[1],meeting_text[2],greeting[1])
+    } else {
+    scr_dialogue(greeting[1])
+    }
+    }
+    
+    if npctype = "clown" {
+    if met = false {
+        met = true
+        scr_dialogue(meeting_text[1],greeting[1])
+    } else {
+    scr_dialogue(greeting[1],joke)
+    }
+    }
+    
+    if npctype = "mercenary" {
+    if met = false {
+        met = true
+        scr_dialogue(meeting_text[1],greeting[1])
+    } else {
+    scr_dialogue(greeting[1])
+    }
+    }
+    
+    if npctype = "merchant" {
+    if met = false {
+        met = true
+        scr_dialogue(meeting_text[1],greeting[1])
+    } else {
+    scr_dialogue(greeting[1])
+    }
+    }
+    
+    if npctype = "keeper" {
+    if met = false {
+        met = true
+        scr_dialogue(meeting_text[1],greeting[1])
+    } else {
+    scr_dialogue(greeting[1])
+    }
+    }
+
+    if npctype = "challenger" {
+    if met = false {
+        met = true
+        scr_dialogue(meeting_text[1],greeting[1])
+    } else {
+    scr_dialogue(greeting[1])
+    }
+    }
+    
+    if npctype = "blacksmith" {
+    if met = false {
+        met = true
+        scr_dialogue(meeting_text[1],greeting[1])
+    } else {
+    scr_dialogue(greeting[1])
+    }
+    }
+    
+    if npctype = "reformer" {
+    if met = false {
+        met = true
+        scr_dialogue(meeting_text[1],meeting_text[2],meeting_text[3],meeting_text[4])
+    } else {
+    scr_dialogue(greeting[1])
+    }
+    }
+    
+    if npctype = "bowman" {
+    if met = false {
+        met = true
+        scr_dialogue(meeting_text[1],greeting[1])
+    } else {
+    scr_dialogue(greeting[1])
+    }
+    }
+    
+    if npctype = "craftsman" {
+    if met = false {
+        met = true
+        scr_dialogue(meeting_text[1],meeting_text[2],meeting_text[3],greeting[1])
+    } else {
+    scr_dialogue(greeting[1])
+    }
+    }
+    
+    if npctype = "dummy" {
+    if met = false {
+        met = true
+        scr_dialogue(greeting[1],greeting[2])
+    } else {
+    scr_dialogue(greeting[1],greeting[2])
     }
     }
 }

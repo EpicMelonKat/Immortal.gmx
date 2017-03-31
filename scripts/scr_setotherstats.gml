@@ -4,7 +4,7 @@ if level < 1 {
 }
 
 stat_health = level*4
-defense = level*0.1
+defense = level*0.4
 mydamage = level
 regen = level/2
 

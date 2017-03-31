@@ -28,6 +28,7 @@
     <sprite>sprites\spr_challenger</sprite>
     <sprite>sprites\spr_vendinghouse</sprite>
     <sprite>sprites\spr_longhouse</sprite>
+    <sprite>sprites\spr_houseback</sprite>
     <sprite>sprites\spr_basichouse</sprite>
     <sprite>sprites\spr_merchant</sprite>
     <sprite>sprites\spr_bowman</sprite>
@@ -51,6 +52,7 @@
     <sprite>sprites\spr_bar_thin</sprite>
     <sprite>sprites\spr_ball</sprite>
     <sprite>sprites\spr_plus</sprite>
+    <sprite>sprites\spr_vignette</sprite>
   </sprites>
   <backgrounds name="background"/>
   <paths name="paths"/>
@@ -59,7 +61,7 @@
     <script>scripts\scr_attack.gml</script>
     <script>scripts\scr_attack_old.gml</script>
     <script>scripts\scr_depth.gml</script>
-    <script>scripts\scr_generation.gml</script>
+    <script>scripts\scr_generationold.gml</script>
     <script>scripts\scr_movement.gml</script>
     <script>scripts\scr_setanimation.gml</script>
     <script>scripts\scr_setstats.gml</script>
@@ -78,6 +80,7 @@
     <script>scripts\scr_text.gml</script>
     <script>scripts\scr_dialogue.gml</script>
     <script>scripts\scr_npcdialogue.gml</script>
+    <script>scripts\scr_generation.gml</script>
   </scripts>
   <fonts name="fonts">
     <font>fonts\fnt_distance</font>
@@ -107,6 +110,9 @@
     <object>objects\obj_Text</object>
     <object>objects\obj_projectile</object>
     <object>objects\obj_textgen</object>
+    <object>objects\obj_house</object>
+    <object>objects\obj_houseback</object>
+    <object>objects\obj_Town</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\room0</room>

@@ -11,8 +11,8 @@
   <colour>12632256</colour>
   <showcolour>-1</showcolour>
   <code>scr_weapons()
-//instance_create(room_width/2,room_height/2,obj_player)
-instance_create(0,0,obj_player)</code>
+instance_create(room_width/2,room_height/2,obj_player)
+//instance_create(0,0,obj_player)</code>
   <enableViews>-1</enableViews>
   <clearViewBackground>-1</clearViewBackground>
   <clearDisplayBuffer>0</clearDisplayBuffer>
@@ -59,6 +59,7 @@ instance_create(0,0,obj_player)</code>
     <instance objName="obj_Generator" x="224" y="32" name="inst_8FC5517F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Aim" x="128" y="256" name="inst_8FA7BC1C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Interface" x="288" y="32" name="inst_1EFFD94E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="DEBUGGER" x="192" y="-32" name="inst_8C07B82B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>

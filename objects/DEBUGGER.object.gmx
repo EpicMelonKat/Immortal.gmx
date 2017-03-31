@@ -8,6 +8,29 @@
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
+    <event eventtype="0" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>place = "center"
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="3" enumb="0">
       <action>
         <libid>1</libid>
@@ -26,6 +49,7 @@
           <argument>
             <kind>1</kind>
             <string>window_set_caption(string(fps))
+
 </string>
           </argument>
         </arguments>
@@ -123,6 +147,29 @@
         </arguments>
       </action>
     </event>
+    <event eventtype="9" enumb="84">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>instance_create(mouse_x,mouse_y,obj_Town)
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="9" enumb="82">
       <action>
         <libid>1</libid>
@@ -186,8 +233,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>global.dxpos = real(get_string("xpos",""))
-global.dypos = real(get_string("ypos",""))
+            <string>instance_create(mouse_x,mouse_y,obj_house)
 </string>
           </argument>
         </arguments>
@@ -214,6 +260,41 @@ global.dypos = real(get_string("ypos",""))
 instance_destroy()
 }
 instance_create(obj_player.x,obj_player.y,obj_weapon)
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="9" enumb="74">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if place = "side" {
+    place = "center" 
+    obj_player.x = room_width/2
+    obj_player.y = room_height/2
+    exit
+} else {
+if place = "center" {
+    place = "side"
+    obj_player.x = 64
+    obj_player.y = 64
+    exit
+}
+}
 </string>
           </argument>
         </arguments>

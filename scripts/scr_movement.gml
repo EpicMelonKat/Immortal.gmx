@@ -100,5 +100,16 @@ if global.player_yspd > 0 {
     }
 }
 
+while place_free(x+global.player_xspd,y)=false {
+global.player_xspd/=2
+}
+while place_free(x,y+global.player_yspd)=false {
+global.player_yspd/=2
+}
+
+if place_free(x+global.player_xspd,y) {
 x+=global.player_xspd
+}
+if place_free(x,y+global.player_yspd) {
 y+=global.player_yspd
+}
