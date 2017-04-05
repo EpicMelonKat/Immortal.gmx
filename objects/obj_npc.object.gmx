@@ -29,7 +29,7 @@
 
 
 randomize()
-npctype = choose("mayor","healer","witch","fortuneteller","keeper","merchant","blacksmith","mercenary","wizard","dummy")
+npctype = choose("mayor","healer","witch","fortuneteller","keeper","merchant","blacksmith","mercenary","wizard","dummy","challenger")
 gender = choose("male","female")
 
 scr_npcdialogue()
@@ -102,6 +102,9 @@ if npctype = "mercenary"{
 }
 if npctype = "dummy" {
     sprite_index = spr_dummy
+}
+if npctype = "challenger" {
+    sprite_index = spr_challenger
 }
 
 if instance_exists(obj_player) {

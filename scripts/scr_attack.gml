@@ -3,7 +3,7 @@ if attacking = true {
     y = holder.y
 }
 
-if mouse_check_button(mb_left) {
+if mouse_check_button(mb_left) and holder.object_index=obj_player or holder.object_index!=obj_player and holder.attack_key=1 {
     if attackable = true {
     if attacking = false {
         self.hit_list = -1
@@ -11,7 +11,7 @@ if mouse_check_button(mb_left) {
         attackable = false
         alarm[0] = melee_fov*2/4
         curdir = image_angle
-        tdir = point_direction(x,y,obj_Aim.x,obj_Aim.y)
+        tdir = point_direction(x,y,holder.aimer.x,holder.aimer.y)
         
         if tdir > 0 and tdir < 90 {
             direction = tdir+melee_fov-90
@@ -36,14 +36,14 @@ if mouse_check_button(mb_left) {
         
         
         //if (curdir > 90 and curdir < 270) {
-        //direction = point_direction(x,y,obj_Aim.x,obj_Aim.y) -90 - melee_fov
+        //direction = point_direction(x,y,holder.aimer.x,holder.aimer.y) -90 - melee_fov
         //}
         
         image_angle=direction
     
         if weapon_type = "magic" {
             proj = instance_create(holder.x,holder.y,obj_projectile)
-            proj.direction = point_direction(holder.x,holder.y,obj_Aim.x,obj_Aim.y)
+            proj.direction = point_direction(holder.x,holder.y,holder.aimer.x,holder.aimer.y)
             proj.speed = sprite_height/1.2
             proj.holder = holder
             proj.oholder = oholder

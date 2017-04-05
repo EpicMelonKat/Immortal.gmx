@@ -4,8 +4,8 @@ up_key = ord("W")
 down_key = ord("S")
 left_key = ord("A")
 right_key = ord("D")
-obj_Aim.x = mouse_x
-obj_Aim.y = mouse_y
+aimer.x = mouse_x
+aimer.y = mouse_y
 }
 if argument0 = 2{
 up_key = vk_up

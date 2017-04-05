@@ -1,12 +1,12 @@
 ///scr_generation(distance,scale)
-
+if instance_exists(obj_player) = true {
 x = obj_player.x
 y = obj_player.y
 
 //req variables
-gendist = 2 //1,2,3,4,5...   1=default
+gendist = 1 //1,2,3,4,5...   1=default
 biome = 1
-scale = 2 //1,2,3,4,5... 1=default
+scale = 1 //1,2,3,4,5... 1=default
 
 //set generator to top left
 x = obj_player.x-(view_wview/2+(view_wview/3*gendist))
@@ -26,4 +26,5 @@ while x < obj_player.x+((view_wview/2)+(view_wview/3)*gendist) and y < obj_playe
         }
     x = obj_player.x-(view_wview/2+(view_wview/3*gendist))
     y+=320/(scale)
+}
 }

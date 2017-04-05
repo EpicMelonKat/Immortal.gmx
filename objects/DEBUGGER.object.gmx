@@ -25,7 +25,10 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>place = "center"
+            <string>if instance_number(DEBUGGER) &gt; 1 {
+instance_destroy()
+}
+place = "center"
 </string>
           </argument>
         </arguments>
@@ -340,10 +343,34 @@ if place = "center" {
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>dummy = instance_create(mouse_x,mouse_y,obj_dummy)
+            <string>dummy = instance_create(mouse_x,mouse_y,obj_enemy)
+
 if instance_exists(obj_player) {
 dummy.weapon.sprite_index = obj_player.sprite_index
 }
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="9" enumb="66">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>instance_create(mouse_x,mouse_y,obj_player)
 </string>
           </argument>
         </arguments>
