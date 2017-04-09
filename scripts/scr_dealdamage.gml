@@ -210,6 +210,8 @@ dmod = 1 + (holder.mydamage/100)
                     cdum.recearth+=holder.weapon.eldamage*dmod
                 }
                 }
+                holder.hits+=1
+                holder.misses=0
                 cdum.lasthitter = holder
                 self.hit_list[array_length_1d(self.hit_list)+1] = cdum.id
                 //ds_list_add(self.hit_list[id],instance_nearest(x,y,obj_player))

@@ -29,6 +29,8 @@
 acc = 5
 hits = 1
 attacking = false
+targetdist = 9999999
+dodistcheck=true
 self.hit_list=-1
 pcol = c_orange
 
@@ -92,8 +94,40 @@ alarm[0]=room_speed*10
             <kind>1</kind>
             <string>speed = 7
 scr_depth()
-
 effect_create_above(ef_flare,x,y,1,pcol)
+
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if weapon.oholder = obj_enemy {
+if dodistcheck = true {
+tempdist = targetdist
+targetdist = distance_to_object(weapon.holder.aimer)
+if tempdist &lt; targetdist {
+    dodistcheck=false
+    weapon.holder.misses+=1
+    weapon.holder.hits=0
+    //show_message(string(weapon.holder.misses)) shows enemy's current misses
+}
+}
+}
 </string>
           </argument>
         </arguments>

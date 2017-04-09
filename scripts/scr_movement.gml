@@ -113,3 +113,5 @@ x+=global.player_xspd
 if place_free(x,y+global.player_yspd) {
 y+=global.player_yspd
 }
+xmod = global.player_xspd
+ymod = global.player_yspd

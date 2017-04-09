@@ -70,7 +70,8 @@ weapon = instance_create(x,y,obj_weapon)
 weapon.holder = id
 weapon.oholder = object_index
 
-
+xmod=0
+ymod=0
 
 alarm[0]=120//regen alarm
 
