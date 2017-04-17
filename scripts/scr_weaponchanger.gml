@@ -11,7 +11,8 @@ wep[9]=spr_scythe
 wep[10]=spr_sledgehammer
 wep[11]=spr_woodensword
 wep[12]=spr_dynastyblade
-wepmax = 12
+wep[13]=spr_crystil
+wepmax = 13
 
 if mouse_wheel_down() {
     if mwep < wepmax {

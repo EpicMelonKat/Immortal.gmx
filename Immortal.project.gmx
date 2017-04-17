@@ -34,6 +34,7 @@
     <sprite>sprites\spr_bowman</sprite>
     <sprite>sprites\spr_ninjadagger</sprite>
     <sprite>sprites\spr_player</sprite>
+    <sprite>sprites\sprite49</sprite>
     <sprite>sprites\spr_player1</sprite>
     <sprite>sprites\spr_player3</sprite>
     <sprite>sprites\spr_purityblade</sprite>
@@ -53,6 +54,8 @@
     <sprite>sprites\spr_ball</sprite>
     <sprite>sprites\spr_plus</sprite>
     <sprite>sprites\spr_vignette</sprite>
+    <sprite>sprites\spr_crystil_regular</sprite>
+    <sprite>sprites\spr_crystil</sprite>
   </sprites>
   <backgrounds name="background"/>
   <paths name="paths"/>
@@ -83,6 +86,7 @@
     <script>scripts\scr_emovement.gml</script>
     <script>scripts\scr_emovement_test.gml</script>
     <script>scripts\scr_factions.gml</script>
+    <script>scripts\scr_createproj.gml</script>
   </scripts>
   <fonts name="fonts">
     <font>fonts\fnt_distance</font>
@@ -116,6 +120,8 @@
     <object>objects\obj_house</object>
     <object>objects\obj_houseback</object>
     <object>objects\obj_Town</object>
+    <object>objects\obj_loot</object>
+    <object>objects\obj_Spawner</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\room0</room>

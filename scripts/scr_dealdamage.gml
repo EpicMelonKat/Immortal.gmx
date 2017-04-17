@@ -33,6 +33,7 @@ dmod = 1 + (holder.mydamage/100)
                 }
                 cdum.lasthitter = holder
                 self.hit_list[array_length_1d(self.hit_list)+1] = cdum.id
+                cdum.damaged+=1
                 //ds_list_add(self.hit_list[id],instance_nearest(x,y,obj_dummy))
             }
         if place_meeting(x,y,obj_dummy) {
@@ -63,6 +64,7 @@ dmod = 1 + (holder.mydamage/100)
                 }
                 cdum.lasthitter = holder
                 self.hit_list[array_length_1d(self.hit_list)+1] = cdum.id
+                cdum.damaged+=1
                 //ds_list_add(self.hit_list[id],instance_nearest(x,y,obj_dummy))
             }
         }
@@ -96,6 +98,7 @@ dmod = 1 + (holder.mydamage/100)
                 }
                 }
                 cdum.lasthitter = holder
+                cdum.damaged+=1
                 self.hit_list[array_length_1d(self.hit_list)+1] = cdum.id
             }
         }
@@ -109,7 +112,7 @@ dmod = 1 + (holder.mydamage/100)
 
 if object_index = obj_projectile {
 dmod = 1 + (holder.mydamage/100)
-    if holder.weapon.weapon_type = "magic" {
+    if holder.weapon.weapon_type != "melee" {
         if oholder = obj_player { //ally
         if place_meeting(x,y,obj_dummy) {
             cdum = instance_nearest(x,y,obj_dummy)
@@ -140,6 +143,7 @@ dmod = 1 + (holder.mydamage/100)
                 }
                 cdum.lasthitter = holder
                 self.hit_list[array_length_1d(self.hit_list)+1] = cdum.id
+                cdum.damaged+=1
                 //ds_list_add(self.hit_list[id],instance_nearest(x,y,obj_dummy))
                 hits-=1
                 if hits<=0 {
@@ -174,6 +178,7 @@ dmod = 1 + (holder.mydamage/100)
                 }
                 cdum.lasthitter = holder
                 self.hit_list[array_length_1d(self.hit_list)+1] = cdum.id
+                cdum.damaged+=1
                 //ds_list_add(self.hit_list[id],instance_nearest(x,y,obj_dummy))
                 hits-=1
                 if hits<=0 {
@@ -214,6 +219,7 @@ dmod = 1 + (holder.mydamage/100)
                 holder.misses=0
                 cdum.lasthitter = holder
                 self.hit_list[array_length_1d(self.hit_list)+1] = cdum.id
+                cdum.damaged+=1
                 //ds_list_add(self.hit_list[id],instance_nearest(x,y,obj_player))
                 hits-=1
                 if hits<=0 {
@@ -224,7 +230,7 @@ dmod = 1 + (holder.mydamage/100)
     }//
     
     }
-    if holder.weapon.weapon_type != "magic" {
+    if holder.weapon.weapon_type = "melee" {
         instance_destroy()
     }
 }

@@ -42,11 +42,27 @@ if mouse_check_button(mb_left) and holder.object_index=obj_player or holder.obje
         image_angle=direction
     
         if weapon_type = "magic" {
-            proj = instance_create(holder.x,holder.y,obj_projectile)
+            proj = scr_createproj(holder.x,holder.y,-1,6,0.01,c_white,ef_smoke,c_aqua)
             proj.direction = point_direction(holder.x,holder.y,holder.aimer.x,holder.aimer.y)
             proj.speed = sprite_height/1.2
-            proj.holder = holder
-            proj.oholder = oholder
+        }
+        if weapon_type = "range" {
+            if sprite_index = spr_crystil {//temporary
+                for (i=1;i<5;i=i) {
+                    proj = scr_createproj(holder.x,holder.y,-1,7,0,c_white,ef_flare,c_orange)
+                    randomize()
+                    proj.x+=irandom_range(-100,100)
+                    proj.y+=irandom_range(-100,100)
+                    proj.holder = holder
+                    proj.oholder = oholder
+                    with(proj) {
+                        effect_create_below(ef_smoke,x,y,1,c_dkgray)
+                        direction = point_direction(x,y,holder.aimer.x,holder.aimer.y)
+                    }
+                    proj.speed = sprite_height/1.2
+                    i+=1
+                } ////////////////////////////////////
+            }
         }
     }
     }

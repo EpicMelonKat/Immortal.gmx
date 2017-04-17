@@ -36,6 +36,7 @@ attack_key=0
 
 hits=0
 misses=0
+damaged=0
 
 speed = 0
 
@@ -85,7 +86,26 @@ t_recearth = 0
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>lasthitter.recexp+=round(level*level*0.55)
+            <string>if instance_exists(lasthitter) {
+lasthitter.recexp+=round(level*level*0.55)
+}
+randomize()
+//drop chances
+chance = 100
+if irandom_range(1,100) &lt;= chance {
+    loot = instance_create(x,y,obj_loot)
+    loot.type = "crystil"
+}
+chance = 50
+if irandom_range(1,100) &lt;= chance {
+    loot = instance_create(x,y,obj_loot)
+    loot.type = "crystil"
+}
+chance = 25
+if irandom_range(1,100) &lt;= chance {
+    loot = instance_create(x,y,obj_loot)
+    loot.type = "crystil"
+}
 </string>
           </argument>
         </arguments>
