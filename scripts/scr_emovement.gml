@@ -8,10 +8,10 @@ sightdist = 100
 dodgedist = 350
 if instance_exists(weapon) {
 if weapon.weapon_type = "melee" {
-sightdist = 100
+sightdist = sprite_get_height(weapon.sprite_index)-60
 }
-if weapon.weapon_type = "magic" {
-sightdist = 800
+if weapon.weapon_type = "magic" or weapon.weapon_type = "range" {
+sightdist = 600
 }
 }
 {
@@ -21,21 +21,29 @@ for (i=0;i!=array_length_1d(rival_list);i+=1) {
             nearest = distance_to_object(instance_nearest(x,y,rival_list[i]))
             nearestobj = instance_nearest(x,y,rival_list[i]).id
             nearesto = instance_nearest(x,y,rival_list[i]).object_index
+            if distance_to_object(nearestobj) < 800 {
             if misses <= 3 { //Direct Aiming
             aimer.x = nearestobj.x
             aimer.y = nearestobj.y
             }
             if misses > 3 { //Experimental Aiming
-            show_message(string(nearestobj))
-            show_message(string(nearesto))
-            aimer.x = nearestobj.x //+ nearesto.xmod
-            aimer.y = nearestobj.y //+ nearesto.ymod
+                if instance_exists(nearestobj) {
+                    nearestobj.codetarget=id
+                    with(nearestobj) {
+                        if instance_exists(codetarget) {
+                        codetarget.aimer.x = x+(xmod*(distance_to_object(codetarget)/8))//x+xmod
+                        codetarget.aimer.y = y+(ymod*(distance_to_object(codetarget)/8))//y+ymod
+                        }
+                    }
+                }
+            }
+            
             }
         }
     }
 }
 if nearestobj != -1 {
-    if distance_to_object(aimer) <= sightdist {
+    if distance_to_point(nearestobj.x,nearestobj.y)<sightdist {
         attack_key=1
     } else {
         attack_key=0
@@ -92,31 +100,72 @@ if movech = "right" {
 xmod = ((move_left*-1)+move_right)*2
 ymod = ((move_up*-1)+move_down)*2
 }
+//Target Movement
+if instance_exists(weapon) and weapon.attackable=true {
+if instance_exists(obj_projectile) and distance_to_object(instance_nearest(x,y,obj_projectile)) > dodgedist or instance_exists(obj_projectile)=false or instance_exists(obj_projectile)=true and damaged>=3 {
+    if distance_to_object(aimer) > sightdist/2 {
+        //if aimer is to dodgedist more side than elevation, move to the side. opposite. diagonal
+        hori = x-aimer.x //horizontal difference
+        elev = y-aimer.y //vertical difference
+        
+        
+        if hori > 0 {
+            if hori >= sightdist/2 {
+                //move_right=0
+                //move_left=1
+                xmod=-2
+            }
+        }
+        if hori < 0 {
+            if abs(hori) >= sightdist/2 {
+                //move_left=0
+                //move_right=1
+                xmod=2
+            }
+        }
+        if elev < 0 {
+            if abs(elev) >= sightdist/2 {
+                //move_up=0
+                //move_down=1
+                ymod=2
+            }
+        }
+        if elev > 0 {
+            if elev >= sightdist/2 {
+                //move_down=0
+                //move_up=1
+                ymod=-2
+            }
+        }
+        
 
+    }
+}
+}
 //Avoid
-if instance_exists(obj_projectile) {
+if instance_exists(obj_projectile) and damaged<3 {
 if distance_to_object(instance_nearest(x,y,obj_projectile)) <= dodgedist { //and instance_nearest(x,y,obj_projectile).weapon.oholder!=object_index {
 clospro = point_direction(x,y,instance_nearest(x,y,obj_projectile).x,instance_nearest(x,y,obj_projectile).y)
 if clospro>=30 and clospro <=60 or clospro>=120 and clospro<=150 or clospro>=210 and clospro<=240 or clospro>=300 and clospro<=330{
 //diagonal directions
 if clospro >= 30 and clospro <= 60 { //if proj is coming from top-right
-    ymod=2
-    xmod=-2
+    ymod=-2*dodgeloop
+    xmod=-2*dodgeloop
 }
 
 if clospro >= 120 and clospro <= 150 { //if proj is coming from top-left
-    ymod=2
-    xmod=2
+    ymod=-2*dodgeloop
+    xmod=2*dodgeloop
 }
 
 if clospro >= 210 and clospro <= 240 { //if proj is coming from bottom-left
-    ymod=-2
-    xmod=2
+    ymod=2*dodgeloop
+    xmod=2*dodgeloop
 }
 
 if clospro >= 300 and clospro <= 330 { //if proj is coming from bottom-right
-    ymod=-2
-    xmod=-2
+    ymod=2*dodgeloop
+    xmod=-2*dodgeloop
 }
 } else {
 //cardinal directions
@@ -154,7 +203,23 @@ if clospro >= 226 and clospro <= 315 { //if proj is coming from down
 }
 }
 }
-
+//Target Avoiding
+if instance_exists(weapon) {
+if nearestobj != -1 and weapon.attackable=false and distance_to_object(nearestobj) < sightdist*1.6 and weapon.weapon_type="melee" {
+    if nearestobj.x > x {
+        xmod=-2
+    }
+    if nearestobj.x <= x {
+        xmod=2
+    }
+    if nearestobj.y > y {
+        ymod=-2
+    }
+    if nearestobj.y <= y {
+        ymod=2
+    }
+}
+}
 
 //move
 x+=xmod
