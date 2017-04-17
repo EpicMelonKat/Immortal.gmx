@@ -7,6 +7,7 @@
   <sounds name="sound"/>
   <sprites name="sprites">
     <sprite>sprites\spr_basicbow</sprite>
+    <sprite>sprites\spr_arrow</sprite>
     <sprite>sprites\spr_infinitybow</sprite>
     <sprite>sprites\spr_solarbow</sprite>
     <sprite>sprites\spr_lunarbow</sprite>
@@ -34,6 +35,7 @@
     <sprite>sprites\spr_bowman</sprite>
     <sprite>sprites\spr_ninjadagger</sprite>
     <sprite>sprites\spr_player</sprite>
+    <sprite>sprites\spr_enemy1</sprite>
     <sprite>sprites\spr_player1</sprite>
     <sprite>sprites\spr_player3</sprite>
     <sprite>sprites\spr_purityblade</sprite>
