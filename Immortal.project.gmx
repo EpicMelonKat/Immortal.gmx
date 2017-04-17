@@ -56,6 +56,8 @@
     <sprite>sprites\spr_vignette</sprite>
     <sprite>sprites\spr_crystil_regular</sprite>
     <sprite>sprites\spr_crystil</sprite>
+    <sprite>sprites\spr_enemy1</sprite>
+    <sprite>sprites\spr_arrow</sprite>
   </sprites>
   <backgrounds name="background"/>
   <paths name="paths"/>

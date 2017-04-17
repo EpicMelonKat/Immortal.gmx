@@ -221,6 +221,43 @@ if nearestobj != -1 and weapon.attackable=false and distance_to_object(nearestob
 }
 }
 
+if lastdir = "up" {
+minframe=0
+maxframe=0
+}
+if lastdir = "down" {
+minframe = 4
+maxframe = 4
+}
+if instance_exists(weapon) {
+if weapon.attacking = false {
+
+if xmod!=0 {
+    if lastdir = "up" {
+        minframe = 4
+        maxframe = 8
+    }
+    if lastdir = "down" {
+        minframe = 0
+        maxframe = 4
+    }
+}
+
+if ymod < 0 {
+    lastdir = "up"
+    minframe = 4
+    maxframe = 8
+}
+if ymod > 0 {
+    lastdir = "down"
+    minframe = 0
+    maxframe = 4
+}
+}
+}
+
+scr_animate(minframe,maxframe,0.1)
+
 //move
 x+=xmod
 y+=ymod
