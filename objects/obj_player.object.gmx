@@ -26,7 +26,23 @@
           <argument>
             <kind>1</kind>
             <string>scr_factions()
+inventory[15]=0
+inv_storage[15]=0
+inventory[1]=spr_sledgehammer
+inventory[2]=spr_ninjadagger
+inventory[3]=spr_scythe
+inventory[4]=spr_dynastyblade
+inventory[5]=spr_earthstaff
+inventory[6]=spr_purityblade
+inventory[7]=spr_firestaff
+inventory[8]=spr_waterstaff
+inventory[9]=spr_windstaff
+inv_storage[1]=spr_holystaff
+armor=-1
 
+currency=0
+
+spirits=0
 image_speed = 0
 maxframe = 4
 minframe = 0
@@ -70,6 +86,7 @@ weapon = instance_create(x,y,obj_weapon)
 weapon.holder = id
 weapon.oholder = object_index
 damaged=0
+myinv = instance_create(x,y,obj_Inventory)
 
 xmod=0
 ymod=0

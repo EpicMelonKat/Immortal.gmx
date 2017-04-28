@@ -104,6 +104,28 @@ place = "center"
         </arguments>
       </action>
     </event>
+    <event eventtype="9" enumb="90">
+      <action>
+        <libid>1</libid>
+        <id>531</id>
+        <kind>0</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>0</useapplyto>
+        <exetype>1</exetype>
+        <functionname>action_fullscreen</functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>4</kind>
+            <string>0</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="9" enumb="89">
       <action>
         <libid>1</libid>
@@ -191,6 +213,32 @@ place = "center"
           <argument>
             <kind>1</kind>
             <string>game_restart()
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="9" enumb="81">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if instance_exists(obj_player) {
+    obj_player.spirits+=1
+    obj_player.currency+=1
+}
 </string>
           </argument>
         </arguments>
@@ -320,7 +368,7 @@ if place = "center" {
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>obj_player.recdamage+=1
+            <string>instance_create(mouse_x,mouse_y,obj_ally)
 </string>
           </argument>
         </arguments>
@@ -347,6 +395,51 @@ if place = "center" {
 
 if instance_exists(obj_player) {
 dummy.weapon.sprite_index = obj_player.sprite_index
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="9" enumb="67">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if instance_exists(obj_Inventory) {
+if obj_Inventory.party[1]=-1 or obj_Inventory.party[2]=-1 or obj_Inventory.party[3]=-1 or obj_Inventory.party[4]=-1 {
+nally = instance_create(mouse_x,mouse_y,obj_ally)
+if obj_Inventory.party[1]=-1 {
+obj_Inventory.party[1]=nally.id
+exit
+}
+if obj_Inventory.party[2]=-1 {
+obj_Inventory.party[2]=nally.id
+exit
+}
+if obj_Inventory.party[3]=-1 {
+obj_Inventory.party[3]=nally.id
+exit
+}
+if obj_Inventory.party[4]=-1 {
+obj_Inventory.party[4]=nally.id
+exit
+} else {
+instance_destroy()
+}
+}
 }
 </string>
           </argument>

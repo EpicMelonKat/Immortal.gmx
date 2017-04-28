@@ -25,7 +25,9 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>scr_setotherstats()
+            <string>xmod=0
+ymod=0
+scr_setotherstats()
 scr_factions()
 //key variables
 move_up=0
@@ -44,7 +46,7 @@ speed = 0
 alarm[0]=120
 
 aimer = instance_create(x,y,obj_Aim)
-
+aimermode = "self"
 weapon = instance_create(x,y,obj_weapon)
 weapon.holder = id
 weapon.oholder = object_index
@@ -158,6 +160,33 @@ alarm[1]=60
           <argument>
             <kind>1</kind>
             <string>scr_regen()
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="3" enumb="2">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if minframe &gt;= 4 and maxframe &lt;= 8 {
+    weapon.depth=depth+1
+} else {
+    weapon.depth=depth-1
+}
 </string>
           </argument>
         </arguments>
