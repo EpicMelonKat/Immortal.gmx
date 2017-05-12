@@ -15,12 +15,21 @@ tsc = totalsize/2
 if isel=-1 {
     oldsel=undefined
 }
-if variable = "player_inv" { //xpos+totalsize/2+5,ypos+totalsize/2+50
+if variable = "player_inv" or variable = "inventory" { //xpos+totalsize/2+5,ypos+totalsize/2+50
 draw_roundrect(xpos+tsc-totalsize/2.1-3,ypos-squaresize-30-3-190,xpos+tsc+totalsize/2.1+3+10,ypos+3,0)
 draw_roundrect(xpos-squaresize/2-3-5,ypos-squaresize/2-30-3,xpos+totalsize+squaresize/2+15+3,ypos+squaresize+squaresize/2+3+150,0)
 draw_set_color(c_ltgray)
 draw_roundrect(xpos+tsc-totalsize/2.1,ypos-squaresize-30-190,xpos+tsc+totalsize/2.1+10,ypos,0)
 draw_roundrect(xpos-squaresize/2-5,ypos-squaresize/2-30,xpos+totalsize+squaresize/2+15,ypos+squaresize+squaresize/2+150,0)
+if variable = "inventory" {
+exit
+}
+}
+if variable = "party" {
+draw_roundrect(xpos-squaresize/2-3-5,ypos-squaresize/2-30-3,xpos+totalsize+squaresize/2+15+3,ypos+squaresize+squaresize/2+3+150,0)
+draw_set_color(c_ltgray)
+draw_roundrect(xpos-squaresize/2-5,ypos-squaresize/2-30,xpos+totalsize+squaresize/2+15,ypos+squaresize+squaresize/2+150,0)
+exit
 }
 if variable = "player_equipment" {
 draw_set_color(c_blue)
@@ -39,109 +48,138 @@ curvert = ypos
 //if you combine those facts, you can use array like variable[1,2,3,4...]
 //if you click in a certain square, that square's number will become true
 squrtwo = true
+if variable = "inventory" {
+exit
+}
 for (curvert=ypos;curvert<ypos+verticles*(squaresize+sep);curvert=curvert) {
     for (i=xpos;i<xpos+totalsize;i=i) { //loop from left to right
     draw_rectangle_colour(i+1,curvert+1,i+squaresize-1,curvert+squaresize-1,c_ltgray,c_ltgray,c_ltgray,c_ltgray,0)
     
+    //set selected based on if another is already selected or not and if the square isn't empty
+    if mouse_x > i and mouse_x < i+squaresize {
+            if mouse_y > curvert and mouse_y < curvert+squaresize {
+                squrval[setsquare]=1
+                
+                if mouse_check_button_pressed(mb_left) {
+                    if oldsel != undefined {
+                        if selvar = "party_inv" {
+                            if variable = "player_inv" {
+                                pselid.inventory[oldsel]=obj_player.inventory[squrcount]
+                                obj_player.inventory[squrcount]=selvalue
+                            }
+                            if variable = "player_storage" {
+                                pselid.inventory[oldsel]=obj_player.inv_storage[squrcount]
+                                obj_player.inv_storage[squrcount]=selvalue
+                            }
+                            if variable = "party_inv" {
+                                pselid.inventory[oldsel]=pselid.inventory[squrcount]
+                                pselid.inventory[squrcount]=selvalue
+                            }
+                            isel = -1
+                            oldsel = undefined
+                            selvar = undefined
+                            selvalue = undefined
+                        }
+                        if selvar = "player_inv" {
+                            if variable = "player_inv" {
+                                obj_player.inventory[oldsel]=obj_player.inventory[squrcount]
+                                obj_player.inventory[squrcount]=selvalue
+                            }
+                            if variable = "player_storage" {
+                                obj_player.inventory[oldsel]=obj_player.inv_storage[squrcount]
+                                obj_player.inv_storage[squrcount]=selvalue
+                            }
+                            if variable = "party_inv" {
+                                obj_player.inventory[oldsel]=pselid.inventory[squrcount]
+                                pselid.inventory[squrcount]=selvalue
+                            }
+                            isel = -1
+                            oldsel = undefined
+                            selvar = undefined
+                            selvalue = undefined
+                        }
+                        if selvar = "player_storage" {
+                            if variable = "player_storage" {
+                                obj_player.inv_storage[oldsel]=obj_player.inv_storage[squrcount]
+                                obj_player.inv_storage[squrcount]=selvalue
+                            }
+                            if variable = "player_inv" {
+                                obj_player.inv_storage[oldsel]=obj_player.inventory[squrcount]
+                                obj_player.inventory[squrcount]=selvalue
+                            }
+                            if variable = "party_inv" {
+                                obj_player.inv_storage[oldsel]=pselid.inventory[squrcount]
+                                pselid.inventory[squrcount]=selvalue
+                            }
+                            
+                            isel = -1
+                            oldsel = undefined
+                            selvar = undefined
+                            selvalue = undefined
+                        }
+                    } else {
+                    if oldsel != undefined and oldsel = squrcount {
+                        isel = -1
+                        oldsel = undefined
+                        selvar = undefined
+                        selvalue = undefined
+                    } else {
+                    //
+                    if oldsel = undefined {
+                        if variable = "party_inv" and pselid.inventory[squrcount]!=0 or variable = "player_inv" and obj_player.inventory[squrcount]!=0 or variable = "player_storage" and obj_player.inv_storage[squrcount]!=0{
+                            isel = setsquare
+                            oldsel = squrcount
+                            selvar = variable
+                            selvalue = undefined
+                            if variable = "player_inv" {
+                                selvalue = obj_player.inventory[squrcount]
+                            }
+                            if variable = "player_storage" {
+                                selvalue = obj_player.inv_storage[squrcount]
+                            }
+                            if variable = "party_inv" {
+                                selvalue = pselid.inventory[squrcount]
+                            }
+                        }
+                    }
+                    
+                    //party slot selection code
+                    if variable = "party_slots" and pselslot=setsquare {
+                        pselslot=-1
+                        pselid = -1
+                    } else {
+                    if variable = "party_slots" and pselslot!=setsquare and party[squrcount]!=-1{
+                        pselslot=setsquare
+                        pselid = party[squrcount]
+                    }
+                    }
+                    
+                    //
+                    
+                    }
+                }
+                //if variable = "party_slots" and isel != setsquare {
+                //    isel = setsquare
+                //    oldsel = undefined
+                //    selvar = undefined
+                //    selvalue = undefined
+                //}
+                }
+                
+            }
+    }
+
+    
     if array_length_1d(squrval)-1<setsquare {
         squrval[setsquare]=0
     }
-    
-//    if mouse_check_button_pressed(mb_left) {
-        if squrtwo = true {
-        if mouse_x > i and mouse_x < i+squaresize {
-            if mouse_y > curvert and mouse_y < curvert+squaresize {
-                if squrval[setsquare]=0 {
-                    squrval[setsquare]=1 //highlighted
-                }
-                if squrtwo = true {
-                    if mouse_check_button_pressed(mb_left) {
-                        squrtwo = false
-                        if variable = "party_slots" and party[squrcount]!=-1 or variable = "player_inv" or variable = "player_storage" {
-                        if isel!=setsquare {
-                            isel = setsquare
-                            if oldsel != undefined {
-                                if oldsel!=isel {
-                                    if variable = "player_storage" and instance_exists(obj_player) {
-                                        //if selvar != undefined {
-                                        //show_message(string(selvar))
-                                        //}
-                                        if selvar = "player_storage" {
-                                            obj_player.inv_storage[oldsel] = obj_player.inv_storage[squrcount]
-                                            obj_player.inv_storage[squrcount]=selvalue
-                                            selvar = undefined
-                                            selvalue = undefined
-                                            oldsel = undefined
-                                            isel=-1
-                                        }
-                                        if selvar = "player_inv" {
-                                            //show_message("done")
-                                            obj_player.inventory[oldsel] = obj_player.inv_storage[squrcount]
-                                            obj_player.inv_storage[squrcount]=selvalue
-                                            selvar = undefined
-                                            selvalue = undefined
-                                            oldsel = undefined
-                                            isel=-1
-                                        }
 
-                                        //show_message(string(obj_player.inv_storage[squrcount]))
-                                    }
-                                    
-                                    if variable = "player_inv" and instance_exists(obj_player) {
-                                        //if selvar != undefined {
-                                        //show_message(string(selvar))
-                                        //}
-                                        if selvar = "player_inv" {
-                                            obj_player.inventory[oldsel] = obj_player.inventory[squrcount]
-                                            obj_player.inventory[squrcount] = selvalue
-                                            selvar = undefined
-                                            selvalue = undefined
-                                            oldsel = undefined
-                                            isel=-1
-                                        }
-                                        if selvar = "player_storage" {
-                                            obj_player.inv_storage[oldsel] = obj_player.inventory[squrcount]
-                                            obj_player.inventory[squrcount] = selvalue
-                                            selvar = undefined
-                                            selvalue = undefined
-                                            oldsel = undefined
-                                            isel=-1
-                                        }
-
-                                        //show_message(string(obj_player.inv_storage[squrcount]))
-                                    }
-                                }
-                            }
-                            if variable = "player_inv" and instance_exists(obj_player) or variable = "player_storage" and instance_exists(obj_player){
-                                selvar = variable
-                                if variable = "player_inv" {
-                                    selvalue = obj_player.inventory[squrcount]
-                                }
-                                if variable = "player_storage" {
-                                    selvalue = obj_player.inv_storage[squrcount]
-                                }
-                                oldsel = squrcount
-                            } else {
-                                selvar = undefined
-                                selvalue = undefined
-                                oldsel = undefined
-                            }
-                        } else {
-                            isel=-1
-                        }
-                        }
-                    }
-                }
-            }
-        }
-        }
-//    }
     if variable = "party_slots" {
-    if isel=setsquare and party[squrcount]=-1 {
-        isel=-1
+        if pselslot=setsquare and party[squrcount]=-1 {
+            pselslot=-1
+        }
     }
-    }
-    
+        
     lwidth=4
     if array_length_1d(squrval)>=setsquare and squrval[setsquare]=1 {
         draw_set_color(c_dkgray)
@@ -149,10 +187,15 @@ for (curvert=ypos;curvert<ypos+verticles*(squaresize+sep);curvert=curvert) {
     if array_length_1d(squrval)>=setsquare and squrval[setsquare]=0 {
         draw_set_color(c_black)
     }
-    if isel = setsquare {
+    if instance_exists(obj_player) and obj_player.weapon.weaponsel = squrcount and variable = "player_inv" {
+        draw_set_color(c_yellow)
+    }
+    if isel = setsquare or pselslot=setsquare {
         draw_set_color(c_white)
         lwidth=6
     }
+    
+
     
     draw_line_width(i,curvert,i+squaresize,curvert,lwidth)
     draw_line_width(i,curvert+squaresize,i+squaresize,curvert+squaresize,lwidth)
@@ -163,6 +206,12 @@ for (curvert=ypos;curvert<ypos+verticles*(squaresize+sep);curvert=curvert) {
     }
     setsquare+=1
     draw_set_color(c_black)
+    if variable = "party_armor" {
+        draw_sprite_ext(pselid.sprite_index,0,i+squaresize/1.9,curvert+squaresize/1.9,.65,.65,0,c_white,1)
+    }
+    if variable = "party_inv" {
+        draw_sprite_ext(pselid.inventory[1],1,i+squaresize/1.2,curvert+squaresize/1.2,65/sprite_get_width(pselid.inventory[1]),65/sprite_get_height(pselid.inventory[1]),45,c_white,1)
+    }
     
     if variable = "player_storage" and instance_exists(obj_player) and array_length_1d(obj_player.inv_storage)>squrcount {
         draw_sprite_ext(obj_player.inv_storage[squrcount],1,i+squaresize/1.2,curvert+squaresize/1.2,65/sprite_get_width(obj_player.inv_storage[squrcount]),65/sprite_get_height(obj_player.inv_storage[squrcount]),45,c_white,1)
@@ -177,14 +226,13 @@ for (curvert=ypos;curvert<ypos+verticles*(squaresize+sep);curvert=curvert) {
         draw_sprite_ext(party[squrcount].sprite_index,0,i+squaresize/1.9,curvert+squaresize/1.9,.65,.65,0,c_white,1)
         }
     }
-
     squrcount+=1
     i+=squaresize+sep
     }
     curvert+=squaresize+sep
 }
 
-if variable = "player_inv" {
+if variable = "player_inv" or variable = "inventory" or variable = "party" {
     if instance_exists(obj_player) {
     draw_set_font(fnt_lives)
     draw_set_halign(fa_center)

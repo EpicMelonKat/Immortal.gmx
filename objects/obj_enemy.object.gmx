@@ -48,6 +48,7 @@ alarm[0]=120
 aimer = instance_create(x,y,obj_Aim)
 aimermode = "self"
 weapon = instance_create(x,y,obj_weapon)
+inventory[1]=weapon.sprite_index
 weapon.holder = id
 weapon.oholder = object_index
 lastdir = "down"

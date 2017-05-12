@@ -1,4 +1,4 @@
-if myhealth+regen*0.1 < stat_health*5 {
+if myhealth+regen*0.1 <= stat_health*5 {
 myhealth+=regen*0.1
 }
 if myhealth+regen*0.1 > stat_health*5 {

@@ -368,7 +368,35 @@ if place = "center" {
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>instance_create(mouse_x,mouse_y,obj_ally)
+            <string>dummy = instance_create(mouse_x,mouse_y,obj_ally)
+if instance_exists(obj_player) {
+dummy.weapon.sprite_index = obj_player.weapon.sprite_index
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="9" enumb="71">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if instance_exists(obj_player) {
+obj_player.sprite_index = real(get_string("sprite name",""))
+}
 </string>
           </argument>
         </arguments>
@@ -394,7 +422,7 @@ if place = "center" {
             <string>dummy = instance_create(mouse_x,mouse_y,obj_enemy)
 
 if instance_exists(obj_player) {
-dummy.weapon.sprite_index = obj_player.sprite_index
+dummy.weapon.sprite_index = obj_player.weapon.sprite_index
 }
 </string>
           </argument>
@@ -421,6 +449,9 @@ dummy.weapon.sprite_index = obj_player.sprite_index
             <string>if instance_exists(obj_Inventory) {
 if obj_Inventory.party[1]=-1 or obj_Inventory.party[2]=-1 or obj_Inventory.party[3]=-1 or obj_Inventory.party[4]=-1 {
 nally = instance_create(mouse_x,mouse_y,obj_ally)
+if instance_exists(obj_player) {
+nally.weapon.sprite_index = obj_player.weapon.sprite_index
+}
 if obj_Inventory.party[1]=-1 {
 obj_Inventory.party[1]=nally.id
 exit

@@ -25,14 +25,17 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw=false
+            <string>raw=false
 squrval[0]=0
 isel = -1
 party[1]=-1
 party[2]=-1
 party[3]=-1
 party[4]=-1
+pselid=-1
 
+pselslot=-1
+draw = false
 oldsel = undefined
 selvalue = undefined
 selvar = undefined
@@ -75,12 +78,41 @@ if draw = true {
 //player
 setsquare = 0
 scr_grid(view_xview+view_wview/6,view_yview+view_hview/2,6,40,10,"player_inv",1)
+
+//scr_grid(view_xview+view_wview/6,view_yview+view_hview/2,6,40,10,"inventory",1)
+
 scr_grid(view_xview+view_wview/6+10,view_yview+view_hview/1.65,4,40,10,"player_storage",2)
 scr_grid(view_xview+view_wview/6+5,view_yview+view_hview/4,0,60,0,"player_armor",1)
-scr_grid(view_xview+view_wview/6+5,view_yview+view_hview/2.7,5,40,10,"player_equipment",1)
+scr_grid(view_xview+view_wview/6+5,view_yview+view_hview/2.7,5,40,10,"player_eq",1)
 
 //party
+
+//scr_grid(view_xview+view_wview-270,view_yview+view_hview/2,0,40,0,"party_inv",1)
 scr_grid(view_xview+view_wview-180,view_yview+60,3,60,10,"party_slots",1)
+
+if pselslot!=-1 {
+    scr_grid(view_xview+view_wview-200,view_yview+view_hview/2,6,40,10,"party",1)
+    if pselid!=-1 and instance_exists(pselid) {
+        scr_grid(view_xview+view_wview-240,view_yview+view_hview/2-5,0,40,0,"party_inv",1)
+        scr_grid(view_xview+view_wview-310,view_yview+view_hview/2-25,0,60,0,"party_armor",1)
+        draw_set_color(c_black)
+        draw_rectangle(view_xview+view_wview-230+30-3,view_yview+view_hview/2-25+25-3+25,view_xview+view_wview-230+120+30+30+3,view_yview+view_hview/2-20+25+3+25,0)
+        draw_healthbar(view_xview+view_wview-230+30,view_yview+view_hview/2-25+25+25,view_xview+view_wview-230+120+30+30,view_yview+view_hview/2-20+25+25,(pselid.myhealth/pselid.maxhealth)*100,c_black,c_red,c_red,0,1,0)
+        draw_set_halign(fa_left)
+        draw_set_font(fnt_pstats)
+        draw_text(view_xview+view_wview-340,view_yview+view_hview/2+65,"Health: " + string(round(pselid.stat_health)))
+        draw_text(view_xview+view_wview-340,view_yview+view_hview/2+65+25,"Defense: " + string(round(pselid.defense)))
+        draw_text(view_xview+view_wview-340,view_yview+view_hview/2+65+50,"Regen: " + string(round(pselid.regen)))
+        
+        draw_text(view_xview+view_wview-340+140,view_yview+view_hview/2+65,"Damage: " + string(round(pselid.mydamage)))
+        draw_text(view_xview+view_wview-340+140,view_yview+view_hview/2+65+25,"Cooldown: 0")
+        draw_text(view_xview+view_wview-340+140,view_yview+view_hview/2+65+50,"Speed: " + string(round(pselid.myspeed)))
+        
+        draw_set_font(fnt_plevel)
+        draw_text(view_xview+view_wview-340+140,view_yview+view_hview/2+10,"Lvl " + string(round(pselid.level)))
+    }
+    
+}
 }
 
 if keyboard_check_pressed(ord("I")) or keyboard_check_pressed(vk_escape) {

@@ -1,11 +1,7 @@
-//laziness code (sets weapon to something besides nothing)
-//if instance_exists(weapon) and weapon.sprite_index=0 { weapon.sprite_index=spr_woodensword }
-
 //ATTACK
 attack_key=0
 radview = 800
-sightdist = 500
-if instance_exists(weapon) and weapon.sprite_index!=0 {
+if instance_exists(weapon) {
     if weapon.weapon_type = "melee" {
         sightdist = sprite_get_height(weapon.sprite_index)-20
     }
@@ -290,43 +286,8 @@ lastdir = "up"
 if move_down=1 {
 lastdir = "down"
 }
-
-spd_mod = myspeed/100+2
-xmod = ((move_left*-1)+move_right)*spd_mod
-ymod = ((move_up*-1)+move_down)*spd_mod
-
-if xspd < spd_mod*4 and xspd > spd_mod*-4 {
-    xspd+=xmod
-}
-if yspd < spd_mod*4 and yspd > spd_mod*-4 {
-    yspd+=ymod
-}
-if xspd < 0 {
-    xspd/=1.5
-    if xspd > 0 {
-        xspd = 0
-    }
-}
-if xspd > 0 {
-    xspd/=1.5
-    if xspd < 0 {
-        xspd = 0
-    }
-}
-if yspd < 0 {
-    yspd/=1.5
-    if yspd > 0 {
-        yspd = 0
-    }
-}
-if yspd > 0 {
-    yspd/=1.5
-    if yspd < 0 {
-        yspd = 0
-    }
-}
-
-
+xmod = ((move_left*-1)+move_right)*2
+ymod = ((move_up*-1)+move_down)*2
 if lastdir = "up" {
     minframe = 4
     maxframe = 4
@@ -357,5 +318,5 @@ if xmod!=0 {
 }
 scr_animate(minframe,maxframe,0.1)
 
-x+=xspd
-y+=yspd
+x+=xmod
+y+=ymod

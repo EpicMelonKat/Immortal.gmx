@@ -1,4 +1,9 @@
-
+if object_index=obj_weapon and sprite_index=0 {
+exit
+}
+if object_index=obj_projectile and weapon.sprite_index=0 {
+exit
+}
 
 if attacking = true {
 
@@ -296,6 +301,7 @@ dmod = 1 + (holder.mydamage/100)
     
     }//
     
+    } else {
     }
     if holder.weapon.weapon_type = "melee" {
         instance_destroy()

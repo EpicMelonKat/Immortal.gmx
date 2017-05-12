@@ -94,6 +94,7 @@
     <script>scripts\scr_grid.gml</script>
     <script>scripts\scr_emovement.gml</script>
     <script>scripts\scr_dirdetect.gml</script>
+    <script>scripts\scr_invselection.gml</script>
   </scripts>
   <fonts name="fonts">
     <font>fonts\fnt_distance</font>
@@ -104,6 +105,8 @@
     <font>fonts\fnt_upgrades</font>
     <font>fonts\fnt_upgradesex</font>
     <font>fonts\fnt_lives</font>
+    <font>fonts\fnt_pstats</font>
+    <font>fonts\fnt_plevel</font>
   </fonts>
   <objects name="objects">
     <object>objects\DEBUGGER</object>

@@ -7,9 +7,13 @@ stat_health = level*4
 defense = level*0.4
 mydamage = level
 regen = level/2
+myspeed = level/4
+if myspeed < 1 {
+myspeed = 1
+}
 
-
-
+xspd = 0
+yspd = 0
 
 maxhealth = stat_health
 myhealth = maxhealth

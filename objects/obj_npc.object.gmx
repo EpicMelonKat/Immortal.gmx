@@ -27,6 +27,8 @@
             <kind>1</kind>
             <string>met = false
 
+xspd=0
+yspd=0
 
 randomize()
 npctype = choose("mayor","healer","witch","fortuneteller","keeper","merchant","blacksmith","mercenary","wizard","dummy","challenger")

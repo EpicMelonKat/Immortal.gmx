@@ -3,7 +3,7 @@ if attacking = true {
     y = holder.y
 }
 
-if mouse_check_button(mb_left) and holder.object_index=obj_player or holder.object_index!=obj_player and holder.attack_key=1 {
+if mouse_check_button(mb_left) and holder.object_index=obj_player and sprite_index!=0 or holder.object_index!=obj_player and holder.attack_key=1 and sprite_index!=0{
     if attackable = true {
     if attacking = false {
         self.hit_list = -1
@@ -63,6 +63,8 @@ if mouse_check_button(mb_left) and holder.object_index=obj_player or holder.obje
                     i+=1
                 } ////////////////////////////////////
             }
+        } else {
+        
         }
     }
     }
